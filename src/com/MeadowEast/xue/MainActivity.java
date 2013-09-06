@@ -19,6 +19,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	public static String mode;
 	static final String TAG = "XUE MainActivity";
 	
+	static final String DATA_FILE = "vocabUTF8.txt";
+	static final String DATA_FILE_URL = "http://www.meadoweast.com/capstone/" + DATA_FILE;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +40,19 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v){
     	Intent i;
     	switch (v.getId()){
-    	case R.id.ecButton:
-    		mode = "ec";
-    		i = new Intent(this, LearnActivity.class);
-    		startActivity(i);
-			break;
-    	case R.id.ceButton:
-    		mode = "ce";
-    		i = new Intent(this, LearnActivity.class);
-    		startActivity(i);
-			break;
-    	case R.id.exitButton:
-    		finish();
-			break;
+	    	case R.id.ecButton:
+	    		mode = "ec";
+	    		i = new Intent(this, LearnActivity.class);
+	    		startActivity(i);
+				break;
+	    	case R.id.ceButton:
+	    		mode = "ce";
+	    		i = new Intent(this, LearnActivity.class);
+	    		startActivity(i);
+				break;
+	    	case R.id.exitButton:
+	    		finish();
+				break;
     	}
     }
     
@@ -58,4 +61,16 @@ public class MainActivity extends Activity implements OnClickListener {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    /**
+     * attempts to download a new vocab data file from the web
+     */
+    public static boolean downloadNewDataFile()
+    {
+    	boolean result = false;
+    	
+    	
+    	return result;
+    }
+    
 }

@@ -1,5 +1,11 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar" />
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar" >
+    </style>
+    
+    <style name="BackgroundStyle" >
+        <item name="android:background">#CC0000</item>
+    </style>
+    
 
 </resources>

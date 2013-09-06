@@ -17,7 +17,7 @@ public class AllCards {
 	}
 	private Card [] cardArray;
 	private AllCards() {		
-		File file =  new File(MainActivity.filesDir, "vocabUTF8.txt");
+		File file =  new File(MainActivity.filesDir, MainActivity.DATA_FILE);
 		ArrayList<Card> allCards = new ArrayList<Card>();
 		Log.d(TAG, "File is "+ file);
 		Log.d(TAG, "Path is "+ file.getAbsolutePath());
