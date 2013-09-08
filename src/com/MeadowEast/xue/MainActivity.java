@@ -2,6 +2,7 @@ package com.MeadowEast.xue;
 
 import java.io.File;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -20,7 +21,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	static final String TAG = "XUE MainActivity";
 	
 	static final String DATA_FILE = "vocabUTF8.txt";
-	static final String DATA_FILE_URL = "http://www.meadoweast.com/capstone/" + DATA_FILE;
+	static final String DATA_FILE_DIR_URL = "http://www.meadoweast.com/capstone/";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends Activity implements OnClickListener {
         File sdCard = Environment.getExternalStorageDirectory();
 		filesDir = new File (sdCard.getAbsolutePath() + "/Android/data/com.MeadowEast.xue/files");
 		Log.d(TAG, "xxx filesDir="+filesDir);
+		isNewDataFile();
     }
 
     public void onClick(View v){
@@ -62,6 +64,17 @@ public class MainActivity extends Activity implements OnClickListener {
         return true;
     }
     
+    public boolean isNewDataFile(){
+    	boolean result = false;
+    	String targetFileDir = filesDir.toURI().toString();
+    	String sourceFileDir = DATA_FILE_DIR_URL + DATA_FILE;
+    	
+    	CheckForDifferentFileTask fileCheckTask = new CheckForDifferentFileTask();
+    	fileCheckTask.execute(DATA_FILE, sourceFileDir, targetFileDir);
+    	
+    	return result;
+    }
+    
     /**
      * attempts to download a new vocab data file from the web
      */
@@ -72,5 +85,7 @@ public class MainActivity extends Activity implements OnClickListener {
     	
     	return result;
     }
+    
+    
     
 }

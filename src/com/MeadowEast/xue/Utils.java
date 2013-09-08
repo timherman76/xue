@@ -5,8 +5,62 @@ import java.net.*;
 import java.util.UUID;
 
 import android.os.Environment;
+import android.util.Log;
 
 public class Utils {
+	
+	
+	/**
+	 * Checks to see if the file exists at the source location is different than the one at the target location
+	 * 
+	 * @param fileName the name of the file 
+	 * @param sourceDirPath the path of the source directory
+	 * @param targetDirPath the path of the target directory
+	 * 
+	 * @return true if the source file exists and either the source file is not present or is different than the target file
+	 */
+	public static boolean checkForDifferentFile(String fileName, String sourceDirPath, String targetDirPath)
+	{
+		boolean result = false;
+		try{
+			URI targetDir = new URI(targetDirPath);
+			URI targetFilePath = targetDir.resolve(fileName);
+			File targetFile = new File(targetFilePath);
+			long targetFileSize = targetFile.length();
+			
+			
+			URI sourceDir = new URI(sourceDirPath);
+			URI sourceFilePath = sourceDir.resolve(fileName);
+			if ( sourceFilePath.getScheme().startsWith("file"))
+			{
+				File sourceFile = new File(sourceFilePath);
+				
+				if ( sourceFile.exists() ){
+					long sourceFileSize = sourceFile.length();
+					result = (!targetFile.exists() || targetFileSize != sourceFileSize);
+				}
+			}
+			else if ( sourceFilePath.getScheme().startsWith("http")){
+				HttpURLConnection urlConn = (HttpURLConnection) sourceFilePath.toURL().openConnection();
+				urlConn.setRequestMethod("GET");
+			    urlConn.setDoOutput(true);
+			    urlConn.connect();	
+				int sourceFileSize = urlConn.getContentLength();
+				result = (targetFileSize != sourceFileSize);
+			}
+		
+			
+			
+			
+		
+		} catch (Exception e){
+			Log.e("Utils", e.getMessage(), e);
+		}
+		
+		return result;
+	}
+	
+	
 	
 	/**
 	 * 
