@@ -14,5 +14,6 @@
     <string name="reallyQuit">Quit and lose all progress on current deck?</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
-
+	<string name="new_vocab_available">Vocabulary Update Available</string>
+	
 </resources>

@@ -42,8 +42,7 @@ public class Utils {
 			}
 			else if ( sourceFilePath.getScheme().startsWith("http")){
 				HttpURLConnection urlConn = (HttpURLConnection) sourceFilePath.toURL().openConnection();
-				urlConn.setRequestMethod("GET");
-			    urlConn.setDoOutput(true);
+				urlConn.setRequestMethod("HEAD");
 			    urlConn.connect();	
 				int sourceFileSize = urlConn.getContentLength();
 				result = (targetFileSize != sourceFileSize);

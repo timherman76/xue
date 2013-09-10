@@ -1,6 +1,9 @@
 package com.MeadowEast.xue;
 
 import java.io.File;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,7 +39,11 @@ public class MainActivity extends Activity implements OnClickListener {
         File sdCard = Environment.getExternalStorageDirectory();
 		filesDir = new File (sdCard.getAbsolutePath() + "/Android/data/com.MeadowEast.xue/files");
 		Log.d(TAG, "xxx filesDir="+filesDir);
-		isNewDataFile();
+		boolean updateAvailable = isNewDataFile();
+		if ( updateAvailable ){
+			View updatePanel = findViewById(R.id.updatePanel);
+			updatePanel.setVisibility(1);
+		}
     }
 
     public void onClick(View v){
@@ -70,7 +77,12 @@ public class MainActivity extends Activity implements OnClickListener {
     	String sourceFileDir = DATA_FILE_DIR_URL + DATA_FILE;
     	
     	CheckForDifferentFileTask fileCheckTask = new CheckForDifferentFileTask();
-    	fileCheckTask.execute(DATA_FILE, sourceFileDir, targetFileDir);
+    	try {
+			result = fileCheckTask.execute(DATA_FILE, sourceFileDir, targetFileDir).get(10, TimeUnit.SECONDS);
+		} catch (Exception e) {
+			Log.e(TAG, e.getMessage(), e);
+			e.printStackTrace();
+		}
     	
     	return result;
     }

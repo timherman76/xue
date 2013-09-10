@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="30dp" >
-
+
     <Button
         android:id="@+id/ecButton"
         android:layout_width="fill_parent"
@@ -17,7 +17,7 @@
         android:padding="20dp"
         android:text="@string/ecButtonLabel"
         android:textSize="40sp" />
-
+
     <Button
         android:id="@+id/ceButton"
         android:layout_width="fill_parent"
@@ -34,5 +34,30 @@
         android:padding="20dp"
         android:text="@string/exitButtonLabel"
         android:textSize="40sp" />
+
+    <LinearLayout
+        android:id="@+id/updatePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:gravity="center"
+        android:visibility="invisible" 
+        android:dividerPadding="2dp">
+
+        <TextView
+            android:id="@+id/updateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_vocab_available"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/downloadButon"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_download"
+             />
+
+    </LinearLayout>
 
 </LinearLayout>
