@@ -1,11 +1,8 @@
 package com.MeadowEast.xue;
 
 import java.io.File;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -39,11 +36,10 @@ public class MainActivity extends Activity implements OnClickListener {
         File sdCard = Environment.getExternalStorageDirectory();
 		filesDir = new File (sdCard.getAbsolutePath() + "/Android/data/com.MeadowEast.xue/files");
 		Log.d(TAG, "xxx filesDir="+filesDir);
-		boolean updateAvailable = isNewDataFile();
-		if ( updateAvailable ){
-			View updatePanel = findViewById(R.id.updatePanel);
-			updatePanel.setVisibility(1);
-		}
+		
+		//perform update check
+		AllCards.updateCheck();
+		
     }
 
     public void onClick(View v){
@@ -64,40 +60,17 @@ public class MainActivity extends Activity implements OnClickListener {
 				break;
     	}
     }
-    
+   
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
     
-    public boolean isNewDataFile(){
-    	boolean result = false;
-    	String targetFileDir = filesDir.toURI().toString();
-    	String sourceFileDir = DATA_FILE_DIR_URL + DATA_FILE;
-    	
-    	CheckForDifferentFileTask fileCheckTask = new CheckForDifferentFileTask();
-    	try {
-			result = fileCheckTask.execute(DATA_FILE, sourceFileDir, targetFileDir).get(10, TimeUnit.SECONDS);
-		} catch (Exception e) {
-			Log.e(TAG, e.getMessage(), e);
-			e.printStackTrace();
-		}
-    	
-    	return result;
-    }
     
-    /**
-     * attempts to download a new vocab data file from the web
-     */
-    public static boolean downloadNewDataFile()
-    {
-    	boolean result = false;
-    	
-    	
-    	return result;
-    }
     
+    
+	    
     
     
 }

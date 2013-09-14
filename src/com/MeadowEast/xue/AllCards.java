@@ -4,18 +4,24 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
+
 import android.util.Log;
 
 public class AllCards {
 	static final String TAG = "CC AllCards";
-	private static AllCards db = new AllCards();
+	
+	private static AllCards db = null;
+	private static Object dbLock = new Object();
 	public static Card getCard(int i){
-		return db.cardArray[i];
+		return getDB().cardArray[i];
 	}
 	public static int length(){
-		return db.cardArray.length;
+		return getDB().cardArray.length;
 	}
+	
 	private Card [] cardArray;
+	
 	private AllCards() {		
 		File file =  new File(MainActivity.filesDir, MainActivity.DATA_FILE);
 		ArrayList<Card> allCards = new ArrayList<Card>();
@@ -46,5 +52,70 @@ public class AllCards {
 			Log.d(TAG, "Unable to get Chinese data from file" );
 		}
 		cardArray = allCards.toArray(new Card[0]);
+	}
+		
+	
+	
+	private static Date lastVocabUpdateCheck = null;
+	private static final int UPDATE_FREQ_HOURS = 4;
+	
+	
+	private synchronized static AllCards getDB() {
+		
+		//if db not created, create it
+		if ( db == null ){
+			//generate new cards from file
+			db = new AllCards();
+		}
+		
+		updateCheck();
+		
+		return db;
+	}
+	
+	
+	protected static synchronized void updateCheck()
+	{
+		boolean needsUpdateCheck = false;
+		
+		if ( lastVocabUpdateCheck == null ){
+			needsUpdateCheck = true;
+		} else {
+			int hoursSinceLastUpdateCheck = Utils.DateDiffHours(new Date(), lastVocabUpdateCheck);
+			needsUpdateCheck = hoursSinceLastUpdateCheck > UPDATE_FREQ_HOURS;
+		}
+
+		//if update overdue, create file data file update
+		if ( needsUpdateCheck ){
+			new CheckForDiffVocabFileTask().execute(MainActivity.DATA_FILE, MainActivity.DATA_FILE_DIR_URL, MainActivity.filesDir.getAbsolutePath());
+			lastVocabUpdateCheck = new Date();
+		}
+	}
+	
+	
+	
+	protected static class CheckForDiffVocabFileTask extends CheckForDifferentFileTask{
+		
+		@Override
+		protected void onPostExecute(Boolean result) {
+			
+			if ( result ){
+				//if we need an update queue up a file download in the background
+				(new DownloadVocabFileTask()).execute( MainActivity.DATA_FILE, MainActivity.DATA_FILE_DIR_URL, MainActivity.filesDir.getAbsolutePath());
+			}
+		}
+	}
+	
+	protected static class DownloadVocabFileTask extends DownloadFileTask{
+		
+		@Override
+		protected void onPostExecute(File result) {
+			//clear out db
+			if ( result != null){
+				synchronized(dbLock){
+					db = null;
+				}
+			}
+		}
 	}
 }

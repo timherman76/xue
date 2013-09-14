@@ -2,13 +2,39 @@ package com.MeadowEast.xue;
 
 import java.io.*;
 import java.net.*;
+import java.util.Date;
 import java.util.UUID;
 
-import android.os.Environment;
 import android.util.Log;
 
 public class Utils {
 	
+
+	static final String TAG = (new Utils()).getClass().getName();
+	
+	public static long DateDiff(Date source, Date target){
+		long result = 0;
+		if ( source != null && target != null){
+			result = source.getTime() - target.getTime();
+		}
+		return result;
+	}
+	
+	public static int DateDiffMins(Date source, Date target){
+		int result = 0;
+		long diff = DateDiff(source, target);
+		diff /= 1000;  //secs
+		diff /= 60;   //mins
+		
+		result = (int) diff;
+		
+		return result;
+	}
+	
+	public static int DateDiffHours(Date source, Date target){
+		int result = Math.round((float)DateDiffMins(source, target) / 60);
+		return result;
+	}
 	
 	/**
 	 * Checks to see if the file exists at the source location is different than the one at the target location
@@ -23,37 +49,43 @@ public class Utils {
 	{
 		boolean result = false;
 		try{
-			URI targetDir = new URI(targetDirPath);
-			URI targetFilePath = targetDir.resolve(fileName);
-			File targetFile = new File(targetFilePath);
+			File targetDir = new File(targetDirPath);
+			File targetFile = new File(targetDir, fileName);
 			long targetFileSize = targetFile.length();
-			
+			long targetFileModified = targetFile.lastModified();
+			long sourceFileSize = 0;
+			long sourceFileModified = 0;
 			
 			URI sourceDir = new URI(sourceDirPath);
 			URI sourceFilePath = sourceDir.resolve(fileName);
 			if ( sourceFilePath.getScheme().startsWith("file"))
 			{
+				//source file is file path
 				File sourceFile = new File(sourceFilePath);
 				
 				if ( sourceFile.exists() ){
-					long sourceFileSize = sourceFile.length();
-					result = (!targetFile.exists() || targetFileSize != sourceFileSize);
+					sourceFileSize = sourceFile.length();
+					sourceFileModified = sourceFile.lastModified();
 				}
 			}
 			else if ( sourceFilePath.getScheme().startsWith("http")){
+				//source file is http url
 				HttpURLConnection urlConn = (HttpURLConnection) sourceFilePath.toURL().openConnection();
 				urlConn.setRequestMethod("HEAD");
 			    urlConn.connect();	
-				int sourceFileSize = urlConn.getContentLength();
-				result = (targetFileSize != sourceFileSize);
+				sourceFileSize = urlConn.getContentLength();
+				sourceFileModified = urlConn.getLastModified();
 			}
-		
+			//the file is different if...
 			
+			result = (!targetFile.exists() //target file doesn't exist 
+					|| targetFileSize != sourceFileSize //the files have different sizes 
+					|| targetFileModified < sourceFileModified);	//the source file has been modified more recently than the target file
 			
 			
 		
 		} catch (Exception e){
-			Log.e("Utils", e.getMessage(), e);
+			Log.e(TAG, e.getMessage(), e);
 		}
 		
 		return result;
@@ -68,21 +100,17 @@ public class Utils {
 	 * @param overwriteExisting indicates whether to overwrite an existing local file with the new file
 	 * @return  the file that was downloaded (or null if not downloaded)
 	 */
-	public static File downloadFile(String remoteFileURL, String downloadDirPath, boolean overwriteExisting)
+	public static File downloadFile(String remoteFileDirURL, String remoteFileName, String downloadDirPath, boolean overwriteExisting)
 	{
 		File file = null;
 		File existingFile = null;
 		try {
 	        //open HTTP connection to the remote file
-			URL url = new URL(remoteFileURL);
+			URL url = new URL(remoteFileDirURL + remoteFileName);
 	        HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
 	        urlConn.setRequestMethod("GET");
-	        urlConn.setDoOutput(true);
 	        urlConn.connect();	
 	
-	        //get the name of the file to download
-	        String remoteFileName = url.getFile();
-	        
 	        //create file object for downloadDir and 
 	        File downloadDir = new File(downloadDirPath);
 	        
@@ -93,10 +121,11 @@ public class Utils {
 	        if ( existingFile.exists() )
 	        {
 	        	//there is already a local file with the same name..
-	        	if ( overwriteExisting )
+	        	if ( !overwriteExisting )
 	        	{
 	        		//give download file unique random name
-	        		file = new File(downloadDir,"tmp_" + UUID.randomUUID());
+	        		String tmpDownloadFileName = "tmp_" + UUID.randomUUID();
+	        		file = new File(downloadDir, tmpDownloadFileName);
 	        	}
 	        }
 	        else
@@ -107,12 +136,11 @@ public class Utils {
 	        }
 	        
 	        //if the file doesn't exist, or if OK to overwrite existing file, then download
-	        if ( file != null )
-	        {
-	        	//this will be used to write the downloaded data into the file we created
+	        if ( file != null ) {
+	        	//create stream to write the downloaded data into the file we created
 		        FileOutputStream fileOutputStream = new FileOutputStream(file);
 		        
-		        //get remote stream from url
+		        //get input stream from remote url
 		        InputStream inputStream = urlConn.getInputStream();
 		
 		        int totalFileBytes = urlConn.getContentLength();
@@ -121,7 +149,7 @@ public class Utils {
 		        int byteCount = 0; 
 		        int bytesDownloaded = 0;
 		
-		      //read file data from url into local file
+		      //read file data from remote stream into local file
 		        while ( (byteCount = inputStream.read(buffer)) > 0 ) {
 		        	fileOutputStream.write(buffer, 0, byteCount);
 		        	bytesDownloaded += byteCount;
@@ -149,8 +177,8 @@ public class Utils {
 		        }
 	        }
 	
-	}catch ( Exception e )
-	{
+	}catch ( Exception e ){
+		Log.e(TAG, e.getMessage(), e);
 		e.printStackTrace();
 	}
 		
