@@ -17,6 +17,7 @@ abstract public class LearningProject {
 	protected CardStatus cardStatus = null;
 	protected Card card = null;	
 	final static String TAG = "CC LearningProject";
+	protected long elapsedTimeMS = 0;
 	
 	public LearningProject(String name, int n) {
 		this.n = n;
@@ -32,10 +33,18 @@ abstract public class LearningProject {
 		readStatus();
 		Log.d(TAG, "Making deck");
 		deck = makeDeck(n, 700);
+		
 		Log.d(TAG, "Exiting LearningProject constructor");
 	}	
 	
-
+	public void incrementElapsedTime(int ms){
+		elapsedTimeMS += ms;
+	}
+	
+	public long getElapsedTime(){
+		return this.elapsedTimeMS;
+	}
+	
 	// n is the size of the deck
 	// target is used to limit the number at Levels 1 and 2, the ones
 	//   mainly being learned

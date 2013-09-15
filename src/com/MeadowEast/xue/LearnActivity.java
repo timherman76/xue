@@ -1,6 +1,8 @@
 package com.MeadowEast.xue;
 
 import java.io.IOException;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,8 +26,10 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 	
 	LearningProject lp;
 	int itemsShown;
-	TextView prompt, answer, other, status;
+	TextView prompt, answer, other, status, timer;
 	Button advance, okay;
+	
+	ScheduledThreadPoolExecutor timerExecutor = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
         answer  = (TextView) findViewById(R.id.answerTextView);
         advance  = (Button) findViewById(R.id.advanceButton);
         okay     = (Button) findViewById(R.id.okayButton);
+        timer  = (TextView) findViewById(R.id.timerTextView);
     	   
     	findViewById(R.id.advanceButton).setOnClickListener(this);
     	findViewById(R.id.okayButton).setOnClickListener(this);
@@ -52,8 +57,55 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     		lp = new EnglishChineseProject(ECDECKSIZE);	
     	else
     		lp = new ChineseEnglishProject(CEDECKSIZE);
+
+    	
+    	
+    	
     	clearContent();
     	doAdvance();
+    	
+    	startTimer();
+    }
+    
+    protected void startTimer(){
+
+    	//schedule timer to update every sec
+    	if ( timerExecutor != null ){
+    		stopTimer();
+    	}
+    	
+    	timerExecutor = new ScheduledThreadPoolExecutor(1);
+    	timerExecutor.scheduleAtFixedRate(new TimerTask(this, 1000), 0, 1000, TimeUnit.MILLISECONDS);
+    	
+    }
+    
+    protected void stopTimer(){
+    	if ( timerExecutor != null){
+    		timerExecutor.shutdownNow();
+    		timerExecutor = null;
+    	}
+    }
+    
+    protected void updateElapsedTime(int ms){
+    	this.lp.incrementElapsedTime(ms);
+    	
+    	
+    	long elapsedTimeMS = lp.getElapsedTime();
+    	long elapsedTimeSecs = (elapsedTimeMS/1000) % 60;
+    	long elapsedTimeMins = (elapsedTimeMS/1000/60) % 60;
+    	long elapsedTimeHours = (elapsedTimeMS/1000/60/60);
+    	
+    	StringBuilder sb = new StringBuilder("Elapsed time:");
+    	if ( elapsedTimeHours > 0){
+    		sb.append(" " + elapsedTimeHours + "h,");
+    	}
+    	if ( elapsedTimeHours > 0 || elapsedTimeMins > 0){
+    		sb.append(" " + elapsedTimeMins + "m,");
+    	}
+    		
+    	sb.append(" " + elapsedTimeSecs + "s");
+    	
+    	timer.setText(sb.toString());
     }
 
     @Override
@@ -89,6 +141,7 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			itemsShown = 1;
 			status.setText(lp.deckStatus());
 		}
+
 	}
 	
 	private void clearContent(){
@@ -173,5 +226,50 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
         } else {
         	return super.onKeyDown(keyCode, event);
         }
+    }
+    
+    @Override
+    protected void onPause() {
+    	stopTimer();
+    	super.onPause();
+    }
+    
+    @Override
+    protected void onResume() {
+    	startTimer();
+    	super.onResume();
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	stopTimer();
+    	super.onDestroy();
+    }
+    
+    
+    protected class TimerTask implements Runnable{
+    	
+    	private LearnActivity learnActivity;
+    	private Runnable action;
+    	
+    	public TimerTask(LearnActivity activity, final int intervalMS){
+    		learnActivity = activity;
+    		action = new Runnable(){
+    			
+                public void run() {
+        			learnActivity.updateElapsedTime(intervalMS);
+                }
+    			
+    		};
+    	}
+    	
+    	public void run() {
+    		try
+    		{
+    			runOnUiThread(action);
+    		}catch (Throwable t){
+    			Log.e(TAG, t.getMessage(), t);
+    		}
+    	}
     }
 }
