@@ -89,21 +89,22 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     protected void updateElapsedTime(int ms){
     	this.lp.incrementElapsedTime(ms);
     	
-    	
     	long elapsedTimeMS = lp.getElapsedTime();
     	long elapsedTimeSecs = (elapsedTimeMS/1000) % 60;
     	long elapsedTimeMins = (elapsedTimeMS/1000/60) % 60;
     	long elapsedTimeHours = (elapsedTimeMS/1000/60/60);
     	
-    	StringBuilder sb = new StringBuilder("Elapsed time:");
+    	StringBuilder sb = new StringBuilder("Elapsed time: ");
     	if ( elapsedTimeHours > 0){
-    		sb.append(" " + elapsedTimeHours + "h,");
+    		sb.append(elapsedTimeHours + ":");
     	}
-    	if ( elapsedTimeHours > 0 || elapsedTimeMins > 0){
-    		sb.append(" " + elapsedTimeMins + "m,");
+
+    	sb.append("" + elapsedTimeMins);
+    	String secs = elapsedTimeSecs + "";
+    	if ( secs.length() < 2){
+    		secs = "0" + secs;
     	}
-    		
-    	sb.append(" " + elapsedTimeSecs + "s");
+    	sb.append(":" + secs);
     	
     	timer.setText(sb.toString());
     }

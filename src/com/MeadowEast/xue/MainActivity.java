@@ -1,14 +1,15 @@
 package com.MeadowEast.xue;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -65,6 +66,29 @@ public class MainActivity extends Activity implements OnClickListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	boolean result = false;
+    	int itemId = item.getItemId();
+    	
+    	switch (itemId){
+    	
+    		case R.id.menu_settings:
+    			FragmentManager fm = this.getFragmentManager();
+    			SettingsDialogFragment settingsDialog = new SettingsDialogFragment();
+    			settingsDialog.show(fm, "Settings");
+    			result = true;
+    			break;
+    			
+    		default:
+    			result = super.onOptionsItemSelected(item);
+    			break;
+    	
+    	}
+    	
+    	return result; 
     }
     
     

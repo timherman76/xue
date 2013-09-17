@@ -21,9 +21,11 @@ public final class R {
         public static final int answerTextView=0x7f070002;
         public static final int ceButton=0x7f07000a;
         public static final int controlLayout=0x7f070004;
+        public static final int deckSizeInput=0x7f07000d;
+        public static final int deckSizeTextView=0x7f07000c;
         public static final int ecButton=0x7f070009;
         public static final int exitButton=0x7f07000b;
-        public static final int menu_settings=0x7f07000c;
+        public static final int menu_settings=0x7f07000e;
         public static final int okayButton=0x7f070006;
         public static final int otherTextView=0x7f070003;
         public static final int promptTextView=0x7f070001;
@@ -33,6 +35,7 @@ public final class R {
     public static final class layout {
         public static final int activity_learn=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int settings_dialog=0x7f030002;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
