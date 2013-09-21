@@ -29,6 +29,10 @@
             android:label="@string/title_CEActivity"
             android:configChanges="orientation|screenSize">>
         </activity>
+        <activity android:name=".AppPreferenceActivity"
+            android:label="@string/title_activity_prefs"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

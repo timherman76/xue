@@ -10,6 +10,9 @@ import android.util.Log;
 
 public class AllCards {
 	static final String TAG = "CC AllCards";
+
+	private static Date lastVocabUpdateCheck = null;
+	private static final int UPDATE_FREQ_HOURS = 72;
 	
 	private static AllCards db = null;
 	private static Object dbLock = new Object();
@@ -56,8 +59,6 @@ public class AllCards {
 		
 	
 	
-	private static Date lastVocabUpdateCheck = null;
-	private static final int UPDATE_FREQ_HOURS = 4;
 	
 	
 	private synchronized static AllCards getDB() {

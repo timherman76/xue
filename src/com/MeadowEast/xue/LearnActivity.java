@@ -31,6 +31,8 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 	
 	ScheduledThreadPoolExecutor timerExecutor = null;
 
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

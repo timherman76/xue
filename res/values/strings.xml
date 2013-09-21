@@ -15,5 +15,7 @@
     <string name="yes">yes</string>
     <string name="no">no</string>
 	<string name="new_vocab_available">Vocabulary Update Available</string>
-	
+	<string name="pref_title_deck_size_ec">English-Chinese Deck Size</string>
+	<string name="pref_summary_deck_size_ec">Set the size of the deck in the English-Chinese activity.</string>
+	<string name="title_activity_prefs">Settings</string>
 </resources>

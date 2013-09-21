@@ -5,7 +5,6 @@ import java.io.File;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -76,9 +75,9 @@ public class MainActivity extends Activity implements OnClickListener {
     	switch (itemId){
     	
     		case R.id.menu_settings:
-    			FragmentManager fm = this.getFragmentManager();
-    			SettingsDialogFragment settingsDialog = new SettingsDialogFragment();
-    			settingsDialog.show(fm, "Settings");
+    			// Launch Preference activity
+    		    Intent i = new Intent(MainActivity.this, AppPreferenceActivity.class);
+    		    startActivity(i);
     			result = true;
     			break;
     			
