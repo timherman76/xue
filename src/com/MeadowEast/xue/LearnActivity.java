@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -21,8 +23,8 @@ import android.widget.Toast;
 
 public class LearnActivity extends Activity implements OnClickListener, OnLongClickListener {
 	static final String TAG = "LearnActivity";
-	static final int ECDECKSIZE = 40;
-	static final int CEDECKSIZE = 60;
+	static final int ECDECKSIZE_DEFAULT = 40;
+	static final int CEDECKSIZE_DEFAULT = 60;
 	
 	LearningProject lp;
 	int itemsShown;
@@ -30,7 +32,8 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 	Button advance, okay;
 	
 	ScheduledThreadPoolExecutor timerExecutor = null;
-
+	
+	SharedPreferences preferences;
 	
 	
     @Override
@@ -39,6 +42,9 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
         setContentView(R.layout.activity_learn);
         Log.d(TAG, "Entering onCreate");
 
+        //init prefs
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        
         itemsShown = 0;
         prompt  = (TextView) findViewById(R.id.promptTextView);
         status  = (TextView) findViewById(R.id.statusTextView);
@@ -55,11 +61,16 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     	findViewById(R.id.answerTextView).setOnLongClickListener(this);
     	findViewById(R.id.otherTextView).setOnLongClickListener(this);
     	
-    	if (MainActivity.mode.equals("ec"))
-    		lp = new EnglishChineseProject(ECDECKSIZE);	
-    	else
-    		lp = new ChineseEnglishProject(CEDECKSIZE);
-
+    	//construct project using deck size form prefs
+    	if (MainActivity.mode.equals("ec")){
+    		String prefKey = getString(R.string.pref_key_deck_size_ec);
+    		int ecDeckSize = Integer.parseInt(preferences.getString(prefKey, ECDECKSIZE_DEFAULT+""));
+    		lp = new EnglishChineseProject(ecDeckSize);
+    	} else {
+    		String prefKey = getString(R.string.pref_key_deck_size_ce);
+    		int ceDeckSize = Integer.parseInt(preferences.getString(prefKey, CEDECKSIZE_DEFAULT+""));
+    		lp = new ChineseEnglishProject(ceDeckSize);
+    	}
     	
     	
     	

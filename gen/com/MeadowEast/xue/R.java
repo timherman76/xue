@@ -47,14 +47,18 @@ public final class R {
         public static final int new_vocab_available=0x7f05000e;
         public static final int no=0x7f05000d;
         public static final int okay=0x7f050008;
-        public static final int pref_summary_deck_size_ec=0x7f050010;
-        public static final int pref_title_deck_size_ec=0x7f05000f;
+        public static final int pref_key_deck_size_ce=0x7f050012;
+        public static final int pref_key_deck_size_ec=0x7f05000f;
+        public static final int pref_summary_deck_size_ce=0x7f050014;
+        public static final int pref_summary_deck_size_ec=0x7f050011;
+        public static final int pref_title_deck_size_ce=0x7f050013;
+        public static final int pref_title_deck_size_ec=0x7f050010;
         public static final int quit=0x7f05000a;
         public static final int reallyQuit=0x7f05000b;
         public static final int show=0x7f050007;
         public static final int title_CEActivity=0x7f050009;
         public static final int title_activity_main=0x7f050003;
-        public static final int title_activity_prefs=0x7f050011;
+        public static final int title_activity_prefs=0x7f050015;
         public static final int yes=0x7f05000c;
     }
     public static final class style {
