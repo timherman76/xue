@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-   <EditTextPreference 
-       	android:numeric="integer"
-       	android:defaultValue="40"
-   		android:key="@string/pref_key_deck_size_ec"
-        android:summary="@string/pref_summary_deck_size_ec"
-        android:title="@string/pref_title_deck_size_ec"
-       />
    
-   <EditTextPreference 
-       	android:numeric="integer"
-       	android:defaultValue="60"
-   		android:key="@string/pref_key_deck_size_ce"
-        android:summary="@string/pref_summary_deck_size_ce"
-        android:title="@string/pref_title_deck_size_ce"
-       />
+    <PreferenceCategory android:title="General">
+	     <CheckBoxPreference 
+	       android:key="@string/pref_key_audio_feedback_on"
+	       android:title="@string/pref_title_audio_feedback_on"
+	       android:summary="@string/pref_summary_audio_feedback_on"
+	       android:defaultValue="true"/>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Deck Settings">
+	   <EditTextPreference 
+	       	android:numeric="integer"
+	       	android:defaultValue="40"
+	   		android:key="@string/pref_key_deck_size_ec"
+	        android:summary="@string/pref_summary_deck_size_ec"
+	        android:title="@string/pref_title_deck_size_ec"
+	       />
+	   
+	   <EditTextPreference 
+	       	android:numeric="integer"
+	       	android:defaultValue="60"
+	   		android:key="@string/pref_key_deck_size_ce"
+	        android:summary="@string/pref_summary_deck_size_ce"
+	        android:title="@string/pref_title_deck_size_ce"
+	        
+	       />
+   </PreferenceCategory>
+  
 
 </PreferenceScreen>

@@ -24,5 +24,9 @@
 	<string name="pref_title_deck_size_ce">Chinese-English Deck Size</string>
 	<string name="pref_summary_deck_size_ce">Set the size of the deck in the Chinese-English activity.</string>
 	
+	<string name="pref_key_audio_feedback_on">pref_audio_feedback_on</string>
+	<string name="pref_title_audio_feedback_on">Audio Feedback Enabled</string>
+	<string name="pref_summary_audio_feedback_on">Enables or disables audio feedback.</string>
+	
 	<string name="title_activity_prefs">Settings</string>
 </resources>
