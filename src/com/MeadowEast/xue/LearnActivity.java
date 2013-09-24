@@ -73,7 +73,6 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     	}
     	
     	
-    	
     	clearContent();
     	doAdvance();
     	
