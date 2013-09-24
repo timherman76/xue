@@ -1,4 +1,4 @@
-package com.MeadowEast.xue;// this is test 
+package com.MeadowEast.xue;
 
 import java.io.*;
 import java.net.*;
