@@ -19,7 +19,7 @@ abstract public class LearningProject {
 	final static String TAG = "CC LearningProject";
 	protected long elapsedTimeMS = 0;
 	
-	public LearningProject(String name, int n) {
+	public LearningProject(String name, int n, int target) {
 		this.n = n;
 		this.name = name;
 		this.seen = 0;
@@ -31,11 +31,20 @@ abstract public class LearningProject {
 		timestamps = new HashMap<Integer, Date>();
 		Log.d(TAG, "Reading status");
 		readStatus();
+		printIndexSets();
 		Log.d(TAG, "Making deck");
-		deck = makeDeck(n, 700);
-		
+		deck = makeDeck(n, target);
+		printIndexSets();
 		Log.d(TAG, "Exiting LearningProject constructor");
 	}	
+	
+	protected void printIndexSets(){
+		for(int i=0; i < indexSets.size(); i++){
+			Log.d(TAG, "IndexSet[" + i +"]:");
+			IndexSet set = indexSets.get(i);
+			Log.d(TAG, set.toString());
+		}
+	}
 	
 	public void incrementElapsedTime(int ms){
 		elapsedTimeMS += ms;
@@ -63,11 +72,21 @@ abstract public class LearningProject {
 		// to 12.5 percent, which is kind of low.  Easy to fix by setting target higher.
 		float factor1 = Math.max(0,  1-indexSets.get(1).size()/(float) target);
 		float factor1n2 = Math.max(0, 1-(indexSets.get(1).size()+indexSets.get(2).size())/((float) 2*target));
+		Log.d(TAG, "n: " + n + ",  target: " + target);
+		for( int i=0; i < indexSets.size(); i++){
+			Log.d(TAG, "indexSets[" + i + "].size()=" + indexSets.get(i).size());
+		}
+		Log.d(TAG, "factor1: " + factor1 + ",  factor1n2: " + factor1n2);
+		
 		cutoffs[0] = .40f * factor1 * factor1n2;
 		if (cutoffs[0] < 0) cutoffs[0] = 0f;
 		cutoffs[1] = cutoffs[0] + .5f;
 		cutoffs[2] = .90f;
 		cutoffs[3] = .97f;
+		
+		for( int i=0; i < cutoffs.length; i++){
+			Log.d(TAG, "cutoffs[" + i + "]=" + cutoffs[i]);
+		}
 		if (indexSets.get(0).size() < n)
 			addNewItems(n);
 		while (d.size()<n){

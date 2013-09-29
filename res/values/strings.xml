@@ -24,6 +24,14 @@
 	<string name="pref_title_deck_size_ce">Chinese-English Deck Size</string>
 	<string name="pref_summary_deck_size_ce">Set the size of the deck (5-100 cards) in the Chinese-English activity.</string>
 	
+	<string name="pref_key_learning_pool_size_ec">pref_learning_pool_size_ec</string>
+	<string name="pref_title_learning_pool_size_ec">English-Chinese Learning Pool Size</string>
+	<string name="pref_summary_learning_pool_size_ec">Set the number of cards in the English-Chinese learning pool.</string>
+	
+	<string name="pref_key_learning_pool_size_ce">pref_learning_pool_size_ec</string>
+	<string name="pref_title_learning_pool_size_ce">Chinese-English Learning Pool Size</string>
+	<string name="pref_summary_learning_pool_size_ce">Set the number of cards in the Chinese-English learning pool.</string>
+	
 	<string name="pref_key_audio_feedback_on">pref_audio_feedback_on</string>
 	<string name="pref_title_audio_feedback_on">Audio Feedback Enabled</string>
 	<string name="pref_summary_audio_feedback_on">Enables or disables audio feedback.</string>

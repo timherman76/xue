@@ -33,6 +33,7 @@
             android:label="@string/title_activity_prefs"
             android:configChanges="orientation|screenSize">
         </activity>
+        
     </application>
 
 </manifest>

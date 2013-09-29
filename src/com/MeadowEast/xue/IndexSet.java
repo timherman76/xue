@@ -50,4 +50,17 @@ public class IndexSet  implements Serializable {
 		remove(index);
 		return index;		
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("size: " + this.size() + "\n");
+		Integer[] values = new Integer[this.size()];
+		values = is.toArray(values);
+		for ( int i=0; i < values.length; i++){
+			sb.append(" " + values[i] + ",");
+		}
+		String result = sb.substring(0, sb.length()-1);
+		return result;
+	}
 }

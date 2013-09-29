@@ -25,6 +25,8 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 	static final String TAG = "LearnActivity";
 	static final int ECDECKSIZE_DEFAULT = 40;
 	static final int CEDECKSIZE_DEFAULT = 60;
+	static final int ECTARGET_DEFAULT = 750;
+	static final int CETARGET_DEFAULT = 750;
 	
 	LearningProject lp;
 	int itemsShown;
@@ -63,13 +65,17 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     	
     	//construct project using deck size form prefs
     	if (MainActivity.mode.equals("ec")){
-    		String prefKey = getString(R.string.pref_key_deck_size_ec);
-    		int ecDeckSize = Integer.parseInt(preferences.getString(prefKey, ECDECKSIZE_DEFAULT+""));
-    		lp = new EnglishChineseProject(ecDeckSize);
+    		int ecDeckSize = Integer.parseInt(preferences.getString(getString(R.string.pref_key_deck_size_ec),
+    											ECDECKSIZE_DEFAULT+""));
+    		int ecTarget = Integer.parseInt(preferences.getString(getString(R.string.pref_key_learning_pool_size_ec),
+										ECTARGET_DEFAULT+""));
+    		lp = new EnglishChineseProject(ecDeckSize, ecTarget);
     	} else {
     		String prefKey = getString(R.string.pref_key_deck_size_ce);
     		int ceDeckSize = Integer.parseInt(preferences.getString(prefKey, CEDECKSIZE_DEFAULT+""));
-    		lp = new ChineseEnglishProject(ceDeckSize);
+    		int ceTarget = Integer.parseInt(preferences.getString(getString(R.string.pref_key_learning_pool_size_ce),
+					CETARGET_DEFAULT+""));
+    		lp = new ChineseEnglishProject(ceDeckSize, ceTarget);
     	}
     	
     	

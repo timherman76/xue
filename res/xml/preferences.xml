@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:robobunny="http://robobunny.com" >
    
     <PreferenceCategory android:title="General">
 	     <CheckBoxPreference 
@@ -17,6 +18,29 @@
 	        android:summary="@string/pref_summary_deck_size_ec"
 	        android:title="@string/pref_title_deck_size_ec"
 	       />
+	   
+	   
+        <com.robobunny.SeekBarPreference
+                android:title="@string/pref_title_learning_pool_size_ec"
+                android:summary="@string/pref_summary_learning_pool_size_ec"
+                android:defaultValue="750"
+                android:max="1250"
+                robobunny:min="250"
+                robobunny:interval="50"
+            	robobunny:unitsLeft=""
+                robobunny:unitsRight="Cards"
+            />
+	   
+         <com.robobunny.SeekBarPreference
+                android:title="@string/pref_title_learning_pool_size_ce"
+                android:summary="@string/pref_summary_learning_pool_size_ce"
+                android:defaultValue="750"
+                android:max="1250"
+                robobunny:min="250"
+                robobunny:interval="50"
+            	robobunny:unitsLeft=""
+                robobunny:unitsRight="Cards"
+            />
 	   
 	   <EditTextPreference 
 	       	android:numeric="integer"
