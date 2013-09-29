@@ -28,7 +28,7 @@
                 robobunny:min="250"
                 robobunny:interval="50"
             	robobunny:unitsLeft=""
-                robobunny:unitsRight="Cards"
+                robobunny:unitsRight=" Cards"
             />
 	   
          <com.robobunny.SeekBarPreference
@@ -39,7 +39,7 @@
                 robobunny:min="250"
                 robobunny:interval="50"
             	robobunny:unitsLeft=""
-                robobunny:unitsRight="Cards"
+                robobunny:unitsRight=" Cards"
             />
 	   
 	   <EditTextPreference 
