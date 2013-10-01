@@ -21,6 +21,7 @@
 	   
 	   
         <com.robobunny.SeekBarPreference
+            	android:key="@string/pref_key_learning_pool_size_ec"
                 android:title="@string/pref_title_learning_pool_size_ec"
                 android:summary="@string/pref_summary_learning_pool_size_ec"
                 android:defaultValue="750"
@@ -30,8 +31,18 @@
             	robobunny:unitsLeft=""
                 robobunny:unitsRight=" Cards"
             />
+        
+        <EditTextPreference 
+	       	android:numeric="integer"
+	       	android:defaultValue="60"
+	   		android:key="@string/pref_key_deck_size_ce"
+	        android:summary="@string/pref_summary_deck_size_ce"
+	        android:title="@string/pref_title_deck_size_ce"
+	        
+	       />
 	   
          <com.robobunny.SeekBarPreference
+            	android:key="@string/pref_key_learning_pool_size_ce"
                 android:title="@string/pref_title_learning_pool_size_ce"
                 android:summary="@string/pref_summary_learning_pool_size_ce"
                 android:defaultValue="750"
@@ -42,14 +53,7 @@
                 robobunny:unitsRight=" Cards"
             />
 	   
-	   <EditTextPreference 
-	       	android:numeric="integer"
-	       	android:defaultValue="60"
-	   		android:key="@string/pref_key_deck_size_ce"
-	        android:summary="@string/pref_summary_deck_size_ce"
-	        android:title="@string/pref_title_deck_size_ce"
-	        
-	       />
+	   
    </PreferenceCategory>
   
 

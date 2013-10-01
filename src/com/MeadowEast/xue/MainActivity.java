@@ -2,6 +2,7 @@ package com.MeadowEast.xue;
 
 import java.io.File;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -40,6 +41,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		//perform update check
 		AllCards.updateCheck();
 		
+		File logfilehandle = new File(MainActivity.filesDir, "ChineseEnglish" + ".log.txt");
+		ProgressLog log = ProgressLog.readFromFile(logfilehandle);
     }
 
     public void onClick(View v){

@@ -2,7 +2,6 @@
 
     <string name="app_name">Xue</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Study Tool</string>
     <string name="ecButtonLabel">English - Chinese</string>
     <string name="ceButtonLabel">Chinese - English</string>
@@ -16,6 +15,9 @@
     <string name="no">no</string>
 	<string name="new_vocab_available">Vocabulary Update Available</string>
 	
+    <string name="menu_settings">Settings</string>
+    <string name="menu_show_progress">Show Progess</string>
+	
 	<string name="pref_key_deck_size_ec">pref_deck_size_ec</string>
 	<string name="pref_title_deck_size_ec">English-Chinese Deck Size</string>
 	<string name="pref_summary_deck_size_ec">Set the size of the deck (5-100 cards) in the English-Chinese activity.</string>
@@ -28,7 +30,7 @@
 	<string name="pref_title_learning_pool_size_ec">English-Chinese Learning Pool Size</string>
 	<string name="pref_summary_learning_pool_size_ec">Set the number of cards in the English-Chinese learning pool.</string>
 	
-	<string name="pref_key_learning_pool_size_ce">pref_learning_pool_size_ec</string>
+	<string name="pref_key_learning_pool_size_ce">pref_learning_pool_size_ce</string>
 	<string name="pref_title_learning_pool_size_ce">Chinese-English Learning Pool Size</string>
 	<string name="pref_summary_learning_pool_size_ce">Set the number of cards in the Chinese-English learning pool.</string>
 	
