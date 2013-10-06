@@ -1,0 +1,203 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    style="@style/BackgroundStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    
+
+       <TextView
+	       android:id="@+id/TitleTextView"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_gravity="center_horizontal"
+	       android:text="@string/prog_title"
+	       android:textAppearance="?android:attr/textAppearanceLarge"
+	       android:textStyle="bold" />
+
+	   <TextView
+	       android:id="@+id/PeriodTextView"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_gravity="center_horizontal"
+	       android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	    <TableLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="30dp" >
+
+	        <TableRow
+	            android:id="@+id/ECtableRow1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	            
+	             <TextView
+			        android:id="@+id/HeaderECTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_header_ec"
+			        android:textAppearance="?android:attr/textAppearanceMedium" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/ECtableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	             
+	            <TextView
+			        android:id="@+id/DecksCompLabelEC"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_decks_comp_label"
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	            
+	            <TextView
+	                android:id="@+id/DecksCompECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	        </TableRow>
+
+	        
+	        <TableRow
+	            android:id="@+id/ECtableRow3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	             
+	            <TextView
+			        android:id="@+id/ItemsLearnedLabelEC"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_items_learned_label"
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	            
+	            <TextView
+			        android:id="@+id/ItemsLearnedECTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+			        android:text=""
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	        </TableRow>
+	        
+	        <TableRow
+	            android:id="@+id/ECtableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	             
+	            <TextView
+			        android:id="@+id/AvgItemsPerDayLabelEC"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_avg_items_learned_per_day_label"
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	            
+	            <TextView
+			        android:id="@+id/AvgItemsPerDayECTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+			        android:text=""
+			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	        </TableRow>
+	        
+	    </TableLayout>
+
+	    
+	    <!-- Chinese-English stats: -->
+	    <TableLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="30dp" >
+	
+		        <TableRow
+		            android:id="@+id/CEtableRow1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" >
+		            
+		             <TextView
+				        android:id="@+id/HeaderCETextView"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/prog_header_ce"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+		        </TableRow>
+	
+		        <TableRow
+		            android:id="@+id/CEtableRow2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" >
+		             
+		            <TextView
+				        android:id="@+id/DecksCompLabelCE"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/prog_decks_comp_label"
+				        android:textAppearance="?android:attr/textAppearanceSmall" />
+		            
+		            <TextView
+		                android:id="@+id/DecksCompCETextView"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="right"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+		        </TableRow>
+	
+		        
+		        <TableRow
+		            android:id="@+id/CEtableRow3"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" >
+		             
+		            <TextView
+				        android:id="@+id/ItemsLearnedLabelCE"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/prog_items_learned_label"
+				        android:textAppearance="?android:attr/textAppearanceSmall" />
+		            
+		            <TextView
+				        android:id="@+id/ItemsLearnedCETextView"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+		                android:layout_gravity="right"
+				        android:text=""
+				        android:textAppearance="?android:attr/textAppearanceSmall" />
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/CEtableRow4"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" >
+		             
+		            <TextView
+				        android:id="@+id/AvgItemsPerDayLabelCE"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/prog_avg_items_learned_per_day_label"
+				        android:textAppearance="?android:attr/textAppearanceSmall" />
+		            
+		            <TextView
+				        android:id="@+id/AvgItemsPerDayCETextView"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+		                android:layout_gravity="right"
+				        android:text=""
+				        android:textAppearance="?android:attr/textAppearanceSmall" />
+		        </TableRow>
+		        
+		    </TableLayout>
+        
+
+
+</LinearLayout>

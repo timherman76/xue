@@ -2,11 +2,10 @@ package com.MeadowEast.xue;
 
 import java.io.File;
 
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.os.Environment;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,8 +40,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		//perform update check
 		AllCards.updateCheck();
 		
-		File logfilehandle = new File(MainActivity.filesDir, "ChineseEnglish" + ".log.txt");
-		ProgressLog log = ProgressLog.readFromFile(logfilehandle);
     }
 
     public void onClick(View v){
@@ -74,20 +71,30 @@ public class MainActivity extends Activity implements OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
     	boolean result = false;
     	int itemId = item.getItemId();
-    	
+    	Intent i = null;
     	switch (itemId){
     	
     		case R.id.menu_settings:
     			// Launch Preference activity
-    		    Intent i = new Intent(MainActivity.this, AppPreferenceActivity.class);
-    		    startActivity(i);
-    			result = true;
+    		    i = new Intent(MainActivity.this, AppPreferenceActivity.class);
+    		    result = true;
     			break;
     			
+    		case R.id.menu_show_progress:
+    			// Launch Progress activity
+    		    i = new Intent(this, ProgressInfoActivity.class);
+    		    result = true;
+    			break;	
+    		
     		default:
     			result = super.onOptionsItemSelected(item);
     			break;
     	
+    	}
+    	
+    	if ( i != null )
+    	{
+    		startActivity(i);
     	}
     	
     	return result; 

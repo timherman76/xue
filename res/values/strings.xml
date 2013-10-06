@@ -39,4 +39,16 @@
 	<string name="pref_summary_audio_feedback_on">Enables or disables audio feedback.</string>
 	
 	<string name="title_activity_prefs">Settings</string>
+	
+	<!-- Progress Info Screen Strings -->
+    <string name="title_progress_info_activity">Learning Progress</string>
+	<string name="prog_title">Learning Progress</string>
+	<string name="prog_header_ec">English-Chinese Learning</string>
+	<string name="prog_header_ce">Chinese-English Learning</string>
+	<string name="prog_decks_comp_label">Decks Completed:</string>
+	<string name="prog_items_learned_label">Items Learned:</string>
+	<string name="prog_avg_items_learned_per_day_label">Avg Items Learned per Day:</string>
+	
+	
+	
 </resources>

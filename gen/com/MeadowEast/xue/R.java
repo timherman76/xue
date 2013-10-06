@@ -16,29 +16,54 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
+        public static final int AvgItemsPerDayCETextView=0x7f080023;
+        public static final int AvgItemsPerDayECTextView=0x7f080018;
+        public static final int AvgItemsPerDayLabelCE=0x7f080022;
+        public static final int AvgItemsPerDayLabelEC=0x7f080017;
+        public static final int CEtableRow1=0x7f080019;
+        public static final int CEtableRow2=0x7f08001b;
+        public static final int CEtableRow3=0x7f08001e;
+        public static final int CEtableRow4=0x7f080021;
+        public static final int DecksCompCETextView=0x7f08001d;
+        public static final int DecksCompECTextView=0x7f080012;
+        public static final int DecksCompLabelCE=0x7f08001c;
+        public static final int DecksCompLabelEC=0x7f080011;
+        public static final int ECtableRow1=0x7f08000e;
+        public static final int ECtableRow2=0x7f080010;
+        public static final int ECtableRow3=0x7f080013;
+        public static final int ECtableRow4=0x7f080016;
+        public static final int HeaderCETextView=0x7f08001a;
+        public static final int HeaderECTextView=0x7f08000f;
+        public static final int ItemsLearnedCETextView=0x7f080020;
+        public static final int ItemsLearnedECTextView=0x7f080015;
+        public static final int ItemsLearnedLabelCE=0x7f08001f;
+        public static final int ItemsLearnedLabelEC=0x7f080014;
         public static final int LinearLayout1=0x7f080000;
+        public static final int PeriodTextView=0x7f08000d;
+        public static final int TitleTextView=0x7f08000c;
         public static final int advanceButton=0x7f080005;
         public static final int answerTextView=0x7f080002;
         public static final int ceButton=0x7f08000a;
         public static final int controlLayout=0x7f080004;
         public static final int ecButton=0x7f080009;
         public static final int exitButton=0x7f08000b;
-        public static final int menu_settings=0x7f080010;
-        public static final int menu_show_progress=0x7f080011;
+        public static final int menu_settings=0x7f080028;
+        public static final int menu_show_progress=0x7f080029;
         public static final int okayButton=0x7f080006;
         public static final int otherTextView=0x7f080003;
         public static final int promptTextView=0x7f080001;
-        public static final int seekBarPrefBarContainer=0x7f08000f;
-        public static final int seekBarPrefUnitsLeft=0x7f08000e;
-        public static final int seekBarPrefUnitsRight=0x7f08000c;
-        public static final int seekBarPrefValue=0x7f08000d;
+        public static final int seekBarPrefBarContainer=0x7f080027;
+        public static final int seekBarPrefUnitsLeft=0x7f080026;
+        public static final int seekBarPrefUnitsRight=0x7f080024;
+        public static final int seekBarPrefValue=0x7f080025;
         public static final int statusTextView=0x7f080007;
         public static final int timerTextView=0x7f080008;
     }
     public static final class layout {
         public static final int activity_learn=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int seek_bar_preference=0x7f030002;
+        public static final int activity_progress_info=0x7f030002;
+        public static final int seek_bar_preference=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -69,12 +94,21 @@ public final class R {
         public static final int pref_title_deck_size_ec=0x7f050011;
         public static final int pref_title_learning_pool_size_ce=0x7f05001a;
         public static final int pref_title_learning_pool_size_ec=0x7f050017;
+        public static final int prog_avg_items_learned_per_day_label=0x7f050026;
+        public static final int prog_decks_comp_label=0x7f050024;
+        public static final int prog_header_ce=0x7f050023;
+        public static final int prog_header_ec=0x7f050022;
+        public static final int prog_items_learned_label=0x7f050025;
+        public static final int prog_title=0x7f050021;
         public static final int quit=0x7f050009;
         public static final int reallyQuit=0x7f05000a;
         public static final int show=0x7f050006;
         public static final int title_CEActivity=0x7f050008;
         public static final int title_activity_main=0x7f050002;
         public static final int title_activity_prefs=0x7f05001f;
+        /**  Progress Info Screen Strings 
+         */
+        public static final int title_progress_info_activity=0x7f050020;
         public static final int yes=0x7f05000b;
     }
     public static final class style {

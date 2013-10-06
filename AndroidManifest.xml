@@ -34,6 +34,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
         
+        <activity
+            android:name=".ProgressInfoActivity"
+            android:label="@string/title_progress_info_activity"
+            android:configChanges="orientation|screenSize">>
+        </activity>
     </application>
 
 </manifest>
