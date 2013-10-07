@@ -19,10 +19,14 @@ public class ProgressInfoActivity extends Activity {
 	ProgressLog progressLogEC = null;
 	ProgressLog progressLogCE = null;
 	
-	protected static final int NUM_DAYS = 90;
+	protected static final int NUM_DAYS = 60;
 	public static final String NUM_DECKS = "NUM_DECKS";
 	public static final String NUM_ITEMS_LEARNED = "NUM_ITEMS_LEARNED";
 	public static final String AVG_ITEMS_PER_DAY = "AVG_ITEMS_PER_DAY";
+
+	public static final String LAST_DECK_DATE = "LAST_DECK_DATE";
+	
+	public static final DateFormat df = new SimpleDateFormat("MMM d, yyyy");
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,6 @@ public class ProgressInfoActivity extends Activity {
     	startDate = cal.getTime();
     	
     	//set text on screen
-    	DateFormat df = new SimpleDateFormat("MMM d, yyyy");
     	TextView periodLabel = (TextView) findViewById(R.id.PeriodTextView);
     	periodLabel.setText("Since " + df.format(startDate));
     }
@@ -63,7 +66,10 @@ public class ProgressInfoActivity extends Activity {
     	numItemsEC.setText(statsEC.get(NUM_ITEMS_LEARNED));
     	TextView avgItemsEC = (TextView) findViewById(R.id.AvgItemsPerDayECTextView);
     	avgItemsEC.setText(statsEC.get(AVG_ITEMS_PER_DAY));
-
+    	TextView lastDeckDateEC = (TextView) findViewById(R.id.LastDeckDateECTextView);
+    	lastDeckDateEC.setText(statsEC.get(LAST_DECK_DATE));
+    	
+    	
     	logfilehandle = new File(MainActivity.filesDir, "ChineseEnglish" + ".log.txt");
     	progressLogCE = ProgressLog.readFromFile(logfilehandle);
     	List<ProgressLogEntry> entriesCE = progressLogCE.getEntriesFromDate(startDate);
@@ -75,14 +81,20 @@ public class ProgressInfoActivity extends Activity {
     	TextView avgItemsCE = (TextView) findViewById(R.id.AvgItemsPerDayCETextView);
     	avgItemsCE.setText(statsCE.get(AVG_ITEMS_PER_DAY));
     	
+    	
     }
 
     protected Dictionary<String, String> setStats(List<ProgressLogEntry> entries){
     	Dictionary<String, String> statValues = new Hashtable<String, String>();
+    	
+    	String lastEntryDate = "";
     	int numDecks = entries.size();
     	int numItemsLearned = 0;
     	if ( entries.size() > 0 ){
     		numItemsLearned = ProgressLog.getNumItemsLearned(entries.get(0), entries.get(entries.size()-1));
+    		ProgressLogEntry lastEntry = entries.get(entries.size()-1);
+    		lastEntryDate = df.format(lastEntry.CreatedDate);
+    		
     	}
     	
     	float avgItemsPerDay = ((float)numItemsLearned)/NUM_DAYS;
@@ -92,6 +104,7 @@ public class ProgressInfoActivity extends Activity {
     	statValues.put(NUM_DECKS, numDecks + "");
     	statValues.put(NUM_ITEMS_LEARNED, numItemsLearned + "");
     	statValues.put(AVG_ITEMS_PER_DAY, nf.format(avgItemsPerDay));
+    	statValues.put(LAST_DECK_DATE, lastEntryDate);
     	
     	return statValues;
     }

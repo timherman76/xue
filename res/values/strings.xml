@@ -43,6 +43,8 @@
 	<!-- Progress Info Screen Strings -->
     <string name="title_progress_info_activity">Learning Progress</string>
 	<string name="prog_title">Learning Progress</string>
+	<string name="prog_subheader_summary">Summary</string>
+	<string name="prog_subheader_last_deck">Last Deck</string>
 	<string name="prog_header_ec">English-Chinese Learning</string>
 	<string name="prog_header_ce">Chinese-English Learning</string>
 	<string name="prog_decks_comp_label">Decks Completed:</string>

@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:gravity="center|top"
     android:orientation="vertical"
-    android:padding="20dp" >
+    android:padding="10dp" >
 
     
 
@@ -24,12 +24,13 @@
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
 	       android:layout_gravity="center_horizontal"
-	       android:textAppearance="?android:attr/textAppearanceSmall" />
+	       style="@style/StatsSmallText" />
 
 	    <TableLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:paddingTop="30dp" >
+	        android:padding="15dp" 
+	        android:gravity="center">
 
 	        <TableRow
 	            android:id="@+id/ECtableRow1"
@@ -37,24 +38,64 @@
 	            android:layout_height="wrap_content" >
 	            
 	             <TextView
-			        android:id="@+id/HeaderECTextView"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="@string/prog_header_ec"
-			        android:textAppearance="?android:attr/textAppearanceMedium" />
-	        </TableRow>
+	                 android:id="@+id/HeaderECTextView"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="@string/prog_header_ec"
+	                 style="@style/StatsLargeText"/>"
 
+	        </TableRow>
+			
+	      	<TableRow
+	            android:id="@+id/ECLastDecktableRow"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	            
+	             <TextView
+	                 android:id="@+id/SubHeaderLastDeckECTextView"
+	                 style="@style/StatsMedText"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="@string/prog_subheader_last_deck"
+	                  />
+	             
+	             <TextView
+	                 android:id="@+id/LastDeckDateECTextView"
+	                 style="@style/StatsMedText"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                  />
+
+	        </TableRow>
+	        			
+	        <TableRow
+	            android:id="@+id/ECSummarytableRow"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	            
+	             <TextView
+	                 android:id="@+id/SubHeaderSummaryECTextView"
+	                 style="@style/StatsMedText"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="@string/prog_subheader_summary"
+	                  />
+
+	        </TableRow>
+	        
+	        
 	        <TableRow
 	            android:id="@+id/ECtableRow2"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content" >
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
 	             
 	            <TextView
-			        android:id="@+id/DecksCompLabelEC"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="@string/prog_decks_comp_label"
-			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                android:id="@+id/DecksCompLabelEC"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_decks_comp_label"
+	                style="@style/StatsSmallText"/>
 	            
 	            <TextView
 	                android:id="@+id/DecksCompECTextView"
@@ -62,7 +103,7 @@
 	                android:layout_height="wrap_content"
 	                android:layout_gravity="right"
 	                android:text=""
-	                android:textAppearance="?android:attr/textAppearanceSmall" />
+	                style="@style/StatsSmallText" />
 
 	        </TableRow>
 
@@ -70,14 +111,15 @@
 	        <TableRow
 	            android:id="@+id/ECtableRow3"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content" >
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp" >
 	             
 	            <TextView
 			        android:id="@+id/ItemsLearnedLabelEC"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:text="@string/prog_items_learned_label"
-			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                style="@style/StatsSmallText" />
 	            
 	            <TextView
 			        android:id="@+id/ItemsLearnedECTextView"
@@ -85,20 +127,21 @@
 			        android:layout_height="wrap_content"
 	                android:layout_gravity="right"
 			        android:text=""
-			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                style="@style/StatsSmallText" />
 	        </TableRow>
 	        
 	        <TableRow
 	            android:id="@+id/ECtableRow4"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content" >
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp" >
 	             
 	            <TextView
 			        android:id="@+id/AvgItemsPerDayLabelEC"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:text="@string/prog_avg_items_learned_per_day_label"
-			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                style="@style/StatsSmallText" />
 	            
 	            <TextView
 			        android:id="@+id/AvgItemsPerDayECTextView"
@@ -106,7 +149,7 @@
 			        android:layout_height="wrap_content"
 	                android:layout_gravity="right"
 			        android:text=""
-			        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                style="@style/StatsSmallText" />
 	        </TableRow>
 	        
 	    </TableLayout>
@@ -116,32 +159,50 @@
 	    <TableLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:paddingTop="30dp" >
+		        android:padding="15dp" 
+	        	android:gravity="center">
 	
 		        <TableRow
 		            android:id="@+id/CEtableRow1"
 		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" >
+		            android:layout_height="wrap_content" 
+	            	>
 		            
 		             <TextView
 				        android:id="@+id/HeaderCETextView"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/prog_header_ce"
-				        android:textAppearance="?android:attr/textAppearanceMedium" />
+	                 	style="@style/StatsLargeText" />
 		        </TableRow>
 	
 		        <TableRow
-		            android:id="@+id/CEtableRow2"
+		            android:id="@+id/CESummarytableRow"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content" >
+		            
+		             <TextView
+		                 android:id="@+id/SubHeaderSummaryCETextView"
+		                 style="@style/StatsMedText"
+		                 android:layout_width="wrap_content"
+		                 android:layout_height="wrap_content"
+		                 android:text="@string/prog_subheader_summary"
+		                  />
+	
+		        </TableRow>
+		        
+		        <TableRow
+		            android:id="@+id/CEtableRow2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"  
+	            	android:paddingLeft="10dp">
 		             
 		            <TextView
 				        android:id="@+id/DecksCompLabelCE"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/prog_decks_comp_label"
-				        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 		            
 		            <TextView
 		                android:id="@+id/DecksCompCETextView"
@@ -149,7 +210,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="right"
 		                android:text=""
-		                android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 	
 		        </TableRow>
 	
@@ -157,14 +218,15 @@
 		        <TableRow
 		            android:id="@+id/CEtableRow3"
 		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" >
+		            android:layout_height="wrap_content" 
+	            	android:paddingLeft="10dp" >
 		             
 		            <TextView
 				        android:id="@+id/ItemsLearnedLabelCE"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/prog_items_learned_label"
-				        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 		            
 		            <TextView
 				        android:id="@+id/ItemsLearnedCETextView"
@@ -172,20 +234,21 @@
 				        android:layout_height="wrap_content"
 		                android:layout_gravity="right"
 				        android:text=""
-				        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 		        </TableRow>
 		        
 		        <TableRow
 		            android:id="@+id/CEtableRow4"
 		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" >
+		            android:layout_height="wrap_content" 
+	            	android:paddingLeft="10dp" >
 		             
 		            <TextView
 				        android:id="@+id/AvgItemsPerDayLabelCE"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/prog_avg_items_learned_per_day_label"
-				        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 		            
 		            <TextView
 				        android:id="@+id/AvgItemsPerDayCETextView"
@@ -193,7 +256,7 @@
 				        android:layout_height="wrap_content"
 		                android:layout_gravity="right"
 				        android:text=""
-				        android:textAppearance="?android:attr/textAppearanceSmall" />
+	                 	style="@style/StatsSmallText" />
 		        </TableRow>
 		        
 		    </TableLayout>

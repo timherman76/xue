@@ -52,7 +52,7 @@ public class ProgressLog {
 			//ex: 
 			//[08/09/13 12:29,  65   19 + 696 = 715, 2334 + 1256 = 3590, 4370]
 			String[] parts = logEntry.split("    ");
-			SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd hh:mm");
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy hh:mm");
 			result.CreatedDate = formatter.parse(parts[0]);
 			
 			//levels 0  1 + 2
@@ -98,11 +98,11 @@ public class ProgressLog {
 		
 		//entries can't be null and can't be the same entry...
 		if ( logEntryA != null && logEntryB != null && !logEntryA.CreatedDate.equals(logEntryB.CreatedDate)){
-			ProgressLogEntry firstEntry = (logEntryA.CreatedDate.compareTo(logEntryB.CreatedDate) > 0) ? logEntryA : logEntryB;
+			ProgressLogEntry firstEntry = (logEntryA.CreatedDate.compareTo(logEntryB.CreatedDate) > 0) ? logEntryB : logEntryA;
 			ProgressLogEntry lastEntry = (firstEntry == logEntryA) ? logEntryB : logEntryA;
 						
-			//go through each level from 1 upwards...
-			for( int i=1; i < lastEntry.LevelSizes.length; i++){
+			//go through each level from 2 upwards...
+			for( int i=2; i < lastEntry.LevelSizes.length; i++){
 				//get the difference in #of items...
 				int diff = lastEntry.LevelSizes[i] - firstEntry.LevelSizes[i];
 				result += diff;
@@ -121,7 +121,8 @@ public class ProgressLog {
 		for (int i = 0; i < logEntries.size(); i++){
 			ProgressLogEntry entry = logEntries.get(i);
 		
-			if ( startDate.compareTo(entry.CreatedDate) <= 0 ){
+			Date entryDate = entry.CreatedDate;
+			if ( startDate.compareTo(entryDate) <= 0 ){
 				//this entry date is equal to or after the start date, take it and all following entries
 				result = logEntries.subList(i, logEntries.size()-1);
 				break;
