@@ -52,7 +52,7 @@ public class ProgressLog {
 			//ex: 
 			//[08/09/13 12:29,  65   19 + 696 = 715, 2334 + 1256 = 3590, 4370]
 			String[] parts = logEntry.split("    ");
-			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy hh:mm");
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm");
 			result.CreatedDate = formatter.parse(parts[0]);
 			
 			//levels 0  1 + 2

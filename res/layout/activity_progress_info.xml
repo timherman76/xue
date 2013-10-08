@@ -45,7 +45,8 @@
 	                 style="@style/StatsLargeText"/>"
 
 	        </TableRow>
-			
+	        
+			<!-- Last Deck Stats -->
 	      	<TableRow
 	            android:id="@+id/ECLastDecktableRow"
 	            android:layout_width="wrap_content"
@@ -59,15 +60,125 @@
 	                 android:text="@string/prog_subheader_last_deck"
 	                  />
 	             
-	             <TextView
-	                 android:id="@+id/LastDeckDateECTextView"
-	                 style="@style/StatsMedText"
-	                 android:layout_width="wrap_content"
-	                 android:layout_height="wrap_content"
-	                  />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckECtableRow0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel0LabelEC"
+	                style="@style/StatsSmallText"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl0_label" />
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel0ECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckECtableRow1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel1LabelEC"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl1_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel1ECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckECtableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel2LabelEC"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl2_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel2ECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckECtableRow3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel3LabelEC"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl3_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel3ECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckECtableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel4LabelEC"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl4_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel4ECTextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
 
 	        </TableRow>
 	        			
+	      	<!-- Summary Stats -->	
 	        <TableRow
 	            android:id="@+id/ECSummarytableRow"
 	            android:layout_width="wrap_content"
@@ -152,114 +263,242 @@
 	                style="@style/StatsSmallText" />
 	        </TableRow>
 	        
-	    </TableLayout>
 
 	    
 	    <!-- Chinese-English stats: -->
-	    <TableLayout
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:padding="15dp" 
-	        	android:gravity="center">
-	
-		        <TableRow
-		            android:id="@+id/CEtableRow1"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" 
-	            	>
-		            
-		             <TextView
-				        android:id="@+id/HeaderCETextView"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:text="@string/prog_header_ce"
-	                 	style="@style/StatsLargeText" />
-		        </TableRow>
-	
-		        <TableRow
-		            android:id="@+id/CESummarytableRow"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" >
-		            
-		             <TextView
-		                 android:id="@+id/SubHeaderSummaryCETextView"
-		                 style="@style/StatsMedText"
-		                 android:layout_width="wrap_content"
-		                 android:layout_height="wrap_content"
-		                 android:text="@string/prog_subheader_summary"
-		                  />
-	
-		        </TableRow>
-		        
-		        <TableRow
-		            android:id="@+id/CEtableRow2"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"  
-	            	android:paddingLeft="10dp">
-		             
-		            <TextView
-				        android:id="@+id/DecksCompLabelCE"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:text="@string/prog_decks_comp_label"
-	                 	style="@style/StatsSmallText" />
-		            
-		            <TextView
-		                android:id="@+id/DecksCompCETextView"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="right"
-		                android:text=""
-	                 	style="@style/StatsSmallText" />
-	
-		        </TableRow>
-	
-		        
-		        <TableRow
-		            android:id="@+id/CEtableRow3"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" 
-	            	android:paddingLeft="10dp" >
-		             
-		            <TextView
-				        android:id="@+id/ItemsLearnedLabelCE"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:text="@string/prog_items_learned_label"
-	                 	style="@style/StatsSmallText" />
-		            
-		            <TextView
-				        android:id="@+id/ItemsLearnedCETextView"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-		                android:layout_gravity="right"
-				        android:text=""
-	                 	style="@style/StatsSmallText" />
-		        </TableRow>
-		        
-		        <TableRow
-		            android:id="@+id/CEtableRow4"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" 
-	            	android:paddingLeft="10dp" >
-		             
-		            <TextView
-				        android:id="@+id/AvgItemsPerDayLabelCE"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:text="@string/prog_avg_items_learned_per_day_label"
-	                 	style="@style/StatsSmallText" />
-		            
-		            <TextView
-				        android:id="@+id/AvgItemsPerDayCETextView"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-		                android:layout_gravity="right"
-				        android:text=""
-	                 	style="@style/StatsSmallText" />
-		        </TableRow>
-		        
-		    </TableLayout>
+            <TableRow
+	            android:id="@+id/CEtableRow1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+		        android:paddingTop="15dp" 
+            	>
+	            
+	             <TextView
+			        android:id="@+id/HeaderCETextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_header_ce"
+                 	style="@style/StatsLargeText" />
+	        </TableRow>
+
+            
+            <!-- Last Deck Stats -->
+	      	<TableRow
+	            android:id="@+id/CELastDecktableRow"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	            
+	             <TextView
+	                 android:id="@+id/SubHeaderLastDeckCETextView"
+	                 style="@style/StatsMedText"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="@string/prog_subheader_last_deck"
+	                  />
+	         
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckCEtableRow0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel0LabelCE"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl0_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel0CETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckCEtableRow1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel1LabelCE"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl1_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel1CETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckCEtableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel2LabelCE"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl2_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel2CETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckCEtableRow3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel3LabelCE"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl3_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel3CETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+	        
+	      	<TableRow
+	            android:id="@+id/LestDeckCEtableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+	            android:paddingLeft="10dp">
+	             
+	            <TextView
+	                android:id="@+id/LastDeckLevel4LabelCE"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/prog_last_deck_lvl4_label"
+	                style="@style/StatsSmallText"/>
+	            
+	            <TextView
+	                android:id="@+id/LastDeckLevel4CETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+	                style="@style/StatsSmallText" />
+
+	        </TableRow>
+            
+	      	<!-- Summary Stats -->	
+	        <TableRow
+	            android:id="@+id/CESummarytableRow"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	            
+	             <TextView
+	                 android:id="@+id/SubHeaderSummaryCETextView"
+	                 style="@style/StatsMedText"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="@string/prog_subheader_summary"
+	                  />
+
+	        </TableRow>
+	        
+	        <TableRow
+	            android:id="@+id/CEtableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"  
+            	android:paddingLeft="10dp">
+	             
+	            <TextView
+			        android:id="@+id/DecksCompLabelCE"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_decks_comp_label"
+                 	style="@style/StatsSmallText" />
+	            
+	            <TextView
+	                android:id="@+id/DecksCompCETextView"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+	                android:text=""
+                 	style="@style/StatsSmallText" />
+
+	        </TableRow>
+
+	        
+	        <TableRow
+	            android:id="@+id/CEtableRow3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+            	android:paddingLeft="10dp" >
+	             
+	            <TextView
+			        android:id="@+id/ItemsLearnedLabelCE"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_items_learned_label"
+                 	style="@style/StatsSmallText" />
+	            
+	            <TextView
+			        android:id="@+id/ItemsLearnedCETextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+			        android:text=""
+                 	style="@style/StatsSmallText" />
+	        </TableRow>
+	        
+	        <TableRow
+	            android:id="@+id/CEtableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" 
+            	android:paddingLeft="10dp" >
+	             
+	            <TextView
+			        android:id="@+id/AvgItemsPerDayLabelCE"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/prog_avg_items_learned_per_day_label"
+                 	style="@style/StatsSmallText" />
+	            
+	            <TextView
+			        android:id="@+id/AvgItemsPerDayCETextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+	                android:layout_gravity="right"
+			        android:text=""
+                 	style="@style/StatsSmallText" />
+	        </TableRow>
+	        
+	    </TableLayout>
         
 
 

@@ -45,6 +45,11 @@
 	<string name="prog_title">Learning Progress</string>
 	<string name="prog_subheader_summary">Summary</string>
 	<string name="prog_subheader_last_deck">Last Deck</string>
+	<string name="prog_last_deck_lvl0_label">Level 0</string>
+	<string name="prog_last_deck_lvl1_label">Level 1</string>
+	<string name="prog_last_deck_lvl2_label">Level 2</string>
+	<string name="prog_last_deck_lvl3_label">Level 3</string>
+	<string name="prog_last_deck_lvl4_label">Level 4</string>
 	<string name="prog_header_ec">English-Chinese Learning</string>
 	<string name="prog_header_ce">Chinese-English Learning</string>
 	<string name="prog_decks_comp_label">Decks Completed:</string>
