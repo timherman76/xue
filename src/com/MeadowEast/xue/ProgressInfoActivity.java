@@ -97,7 +97,7 @@ public class ProgressInfoActivity extends Activity {
     	TextView avgItemsCE = (TextView) findViewById(R.id.AvgItemsPerDayCETextView);
     	avgItemsCE.setText(statsCE.get(AVG_ITEMS_PER_DAY));
     	TextView lastDeckDateCE = (TextView) findViewById(R.id.SubHeaderLastDeckCETextView);
-    	lastDeckDateCE.setText(statsCE.get(LAST_DECK_DATE));
+    	lastDeckDateCE.setText(lastDeckDateCE.getText() + " - " + statsCE.get(LAST_DECK_DATE));
     	TextView lastDecklvl0CE = (TextView) findViewById(R.id.LastDeckLevel0CETextView);
     	lastDecklvl0CE.setText(statsCE.get(LAST_DECK_LVL0));
     	TextView lastDecklvl1CE = (TextView) findViewById(R.id.LastDeckLevel1CETextView);
