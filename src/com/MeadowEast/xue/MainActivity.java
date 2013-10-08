@@ -4,6 +4,7 @@ import java.io.File;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -23,9 +24,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	static final String DATA_FILE = "vocabUTF8.txt";
 	static final String DATA_FILE_DIR_URL = "http://www.meadoweast.com/capstone/";
 	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ecButton   = (Button) findViewById(R.id.ecButton);
         ceButton   = (Button) findViewById(R.id.ceButton);
@@ -36,6 +38,7 @@ public class MainActivity extends Activity implements OnClickListener {
         File sdCard = Environment.getExternalStorageDirectory();
 		filesDir = new File (sdCard.getAbsolutePath() + "/Android/data/com.MeadowEast.xue/files");
 		Log.d(TAG, "xxx filesDir="+filesDir);
+		
 		
 		//perform update check
 		AllCards.updateCheck();
@@ -66,6 +69,28 @@ public class MainActivity extends Activity implements OnClickListener {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+    	//hide progress menu option if no valid log file...
+        MenuItem showProgress = menu.findItem(R.id.menu_show_progress);      
+        
+        File logFile = new File(MainActivity.filesDir, "EnglishChinese" + ".log.txt");
+        
+        boolean logFileValid = logFile.exists() && logFile.canRead(); 
+        
+        if(logFileValid) 
+        {           
+        	showProgress.setVisible(true);
+        }
+        else
+        {
+        	showProgress.setVisible(false);
+        }
+        return true;
+    }
+    
+    
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

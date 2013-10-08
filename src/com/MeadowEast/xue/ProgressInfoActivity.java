@@ -19,7 +19,7 @@ public class ProgressInfoActivity extends Activity {
 	ProgressLog progressLogEC = null;
 	ProgressLog progressLogCE = null;
 	
-	protected static final int NUM_DAYS = 90;
+	protected static final int NUM_DAYS = 7;
 	public static final String NUM_DECKS = "NUM_DECKS";
 	public static final String NUM_ITEMS_LEARNED = "NUM_ITEMS_LEARNED";
 	public static final String AVG_ITEMS_PER_DAY = "AVG_ITEMS_PER_DAY";
@@ -72,17 +72,42 @@ public class ProgressInfoActivity extends Activity {
     	TextView avgItemsEC = (TextView) findViewById(R.id.AvgItemsPerDayECTextView);
     	avgItemsEC.setText(statsEC.get(AVG_ITEMS_PER_DAY));
     	TextView lastDeckDateEC = (TextView) findViewById(R.id.SubHeaderLastDeckECTextView);
-    	lastDeckDateEC.setText(lastDeckDateEC.getText() + " - " + statsEC.get(LAST_DECK_DATE));
-    	TextView lastDecklvl0EC = (TextView) findViewById(R.id.LastDeckLevel0ECTextView);
-    	lastDecklvl0EC.setText(statsEC.get(LAST_DECK_LVL0));
-    	TextView lastDecklvl1EC = (TextView) findViewById(R.id.LastDeckLevel1ECTextView);
-    	lastDecklvl1EC.setText(statsEC.get(LAST_DECK_LVL1));
-    	TextView lastDecklvl2EC = (TextView) findViewById(R.id.LastDeckLevel2ECTextView);
-    	lastDecklvl2EC.setText(statsEC.get(LAST_DECK_LVL2));
-    	TextView lastDecklvl3EC = (TextView) findViewById(R.id.LastDeckLevel3ECTextView);
-    	lastDecklvl3EC.setText(statsEC.get(LAST_DECK_LVL3));
-    	TextView lastDecklvl4EC = (TextView) findViewById(R.id.LastDeckLevel4ECTextView);
-    	lastDecklvl4EC.setText(statsEC.get(LAST_DECK_LVL4));
+    	
+    	
+    	
+    	String lastDeckDateECVal = statsEC.get(LAST_DECK_DATE);
+    	if ( lastDeckDateECVal != null && !lastDeckDateECVal.trim().equals(""))
+    	{
+    		//recent activity
+	    	lastDeckDateEC.setText("Status as of " + statsEC.get(LAST_DECK_DATE));
+	    	
+	    	TextView lastDecklvl0EC = (TextView) findViewById(R.id.LastDeckLevel0ECTextView);
+	    	lastDecklvl0EC.setText(statsEC.get(LAST_DECK_LVL0));
+	    	TextView lastDecklvl1EC = (TextView) findViewById(R.id.LastDeckLevel1ECTextView);
+	    	lastDecklvl1EC.setText(statsEC.get(LAST_DECK_LVL1));
+	    	TextView lastDecklvl2EC = (TextView) findViewById(R.id.LastDeckLevel2ECTextView);
+	    	lastDecklvl2EC.setText(statsEC.get(LAST_DECK_LVL2));
+	    	TextView lastDecklvl3EC = (TextView) findViewById(R.id.LastDeckLevel3ECTextView);
+	    	lastDecklvl3EC.setText(statsEC.get(LAST_DECK_LVL3));
+	    	TextView lastDecklvl4EC = (TextView) findViewById(R.id.LastDeckLevel4ECTextView);
+	    	lastDecklvl4EC.setText(statsEC.get(LAST_DECK_LVL4));
+    	}
+    	else
+    	{
+    		//no recent activity
+    		lastDeckDateEC.setText("No activity since " +  df.format(startDate));
+    		TextView lastDecklvl0LabelEC = (TextView) findViewById(R.id.LastDeckLevel0LabelEC);
+    		TextView lastDecklvl1LabelEC = (TextView) findViewById(R.id.LastDeckLevel1LabelEC);
+    		TextView lastDecklvl2LabelEC = (TextView) findViewById(R.id.LastDeckLevel2LabelEC);
+    		TextView lastDecklvl3LabelEC = (TextView) findViewById(R.id.LastDeckLevel3LabelEC);
+    		TextView lastDecklvl4LabelEC = (TextView) findViewById(R.id.LastDeckLevel4LabelEC);
+    		
+    		lastDecklvl0LabelEC.setText("");
+    		lastDecklvl1LabelEC.setText("");
+    		lastDecklvl2LabelEC.setText("");
+    		lastDecklvl3LabelEC.setText("");
+    		lastDecklvl4LabelEC.setText("");
+    	}
     	
     	
     	//chinese-english
@@ -97,18 +122,40 @@ public class ProgressInfoActivity extends Activity {
     	TextView avgItemsCE = (TextView) findViewById(R.id.AvgItemsPerDayCETextView);
     	avgItemsCE.setText(statsCE.get(AVG_ITEMS_PER_DAY));
     	TextView lastDeckDateCE = (TextView) findViewById(R.id.SubHeaderLastDeckCETextView);
-    	lastDeckDateCE.setText(lastDeckDateCE.getText() + " - " + statsCE.get(LAST_DECK_DATE));
-    	TextView lastDecklvl0CE = (TextView) findViewById(R.id.LastDeckLevel0CETextView);
-    	lastDecklvl0CE.setText(statsCE.get(LAST_DECK_LVL0));
-    	TextView lastDecklvl1CE = (TextView) findViewById(R.id.LastDeckLevel1CETextView);
-    	lastDecklvl1CE.setText(statsCE.get(LAST_DECK_LVL1));
-    	TextView lastDecklvl2CE = (TextView) findViewById(R.id.LastDeckLevel2CETextView);
-    	lastDecklvl2CE.setText(statsCE.get(LAST_DECK_LVL2));
-    	TextView lastDecklvl3CE = (TextView) findViewById(R.id.LastDeckLevel3CETextView);
-    	lastDecklvl3CE.setText(statsCE.get(LAST_DECK_LVL3));
-    	TextView lastDecklvl4CE = (TextView) findViewById(R.id.LastDeckLevel4CETextView);
-    	lastDecklvl4CE.setText(statsCE.get(LAST_DECK_LVL4));
     	
+    	String lastDeckDateCEVal = statsCE.get(LAST_DECK_DATE);
+    	if ( lastDeckDateCEVal != null && !lastDeckDateCEVal.trim().equals(""))
+    	{
+    		//recent activity
+	    	lastDeckDateCE.setText("Status as of " + statsCE.get(LAST_DECK_DATE));
+	    	
+	    	TextView lastDecklvl0CE = (TextView) findViewById(R.id.LastDeckLevel0CETextView);
+	    	lastDecklvl0CE.setText(statsCE.get(LAST_DECK_LVL0));
+	    	TextView lastDecklvl1CE = (TextView) findViewById(R.id.LastDeckLevel1CETextView);
+	    	lastDecklvl1CE.setText(statsCE.get(LAST_DECK_LVL1));
+	    	TextView lastDecklvl2CE = (TextView) findViewById(R.id.LastDeckLevel2CETextView);
+	    	lastDecklvl2CE.setText(statsCE.get(LAST_DECK_LVL2));
+	    	TextView lastDecklvl3CE = (TextView) findViewById(R.id.LastDeckLevel3CETextView);
+	    	lastDecklvl3CE.setText(statsCE.get(LAST_DECK_LVL3));
+	    	TextView lastDecklvl4CE = (TextView) findViewById(R.id.LastDeckLevel4CETextView);
+	    	lastDecklvl4CE.setText(statsCE.get(LAST_DECK_LVL4));
+    	}
+    	else
+    	{
+    		//no recent activity
+    		lastDeckDateCE.setText("No activity since " +  df.format(startDate));
+    		TextView lastDecklvl0LabelCE = (TextView) findViewById(R.id.LastDeckLevel0LabelCE);
+    		TextView lastDecklvl1LabelCE = (TextView) findViewById(R.id.LastDeckLevel1LabelCE);
+    		TextView lastDecklvl2LabelCE = (TextView) findViewById(R.id.LastDeckLevel2LabelCE);
+    		TextView lastDecklvl3LabelCE = (TextView) findViewById(R.id.LastDeckLevel3LabelCE);
+    		TextView lastDecklvl4LabelCE = (TextView) findViewById(R.id.LastDeckLevel4LabelCE);
+    		
+    		lastDecklvl0LabelCE.setText("");
+    		lastDecklvl1LabelCE.setText("");
+    		lastDecklvl2LabelCE.setText("");
+    		lastDecklvl3LabelCE.setText("");
+    		lastDecklvl4LabelCE.setText("");
+    	}
     	
     }
 

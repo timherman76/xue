@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -28,6 +29,10 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 	static final int ECTARGET_DEFAULT = 750;
 	static final int CETARGET_DEFAULT = 750;
 	
+
+	public static MediaPlayer correctSound = null; 
+	public static MediaPlayer incorrectSound = null;
+	
 	LearningProject lp;
 	int itemsShown;
 	TextView prompt, answer, other, status, timer;
@@ -47,6 +52,19 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
         //init prefs
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         
+        
+		//set up audio
+        try
+        {
+        	correctSound = MediaPlayer.create(this, R.raw.correct_sound);
+        	incorrectSound = MediaPlayer.create(this, R.raw.incorrect_sound);
+        }
+        catch ( Exception ex)
+        {
+        	String msg = ex.getMessage();
+        	Log.e(TAG, msg, ex);
+        }
+        
         itemsShown = 0;
         prompt  = (TextView) findViewById(R.id.promptTextView);
         status  = (TextView) findViewById(R.id.statusTextView);
@@ -65,10 +83,21 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     	
     	//construct project using deck size form prefs
     	if (MainActivity.mode.equals("ec")){
-    		int ecDeckSize = Integer.parseInt(preferences.getString(getString(R.string.pref_key_deck_size_ec),
+    		int ecDeckSize = ECDECKSIZE_DEFAULT;
+    		int ecTarget = ECTARGET_DEFAULT;
+    		try
+    		{
+    			ecDeckSize = Integer.parseInt(preferences.getString(getString(R.string.pref_key_deck_size_ec),
     											ECDECKSIZE_DEFAULT+""));
-    		int ecTarget = Integer.parseInt(preferences.getString(getString(R.string.pref_key_learning_pool_size_ec),
-										ECTARGET_DEFAULT+""));
+    		}
+    		catch ( Exception ex){}
+    		
+    		try
+    		{
+    			ecTarget = Integer.parseInt(preferences.getString(getString(R.string.pref_key_learning_pool_size_ec),
+						ECTARGET_DEFAULT+""));
+    		}catch (Exception ex){}
+    		
     		lp = new EnglishChineseProject(ecDeckSize, ecTarget);
     	} else {
     		String prefKey = getString(R.string.pref_key_deck_size_ce);

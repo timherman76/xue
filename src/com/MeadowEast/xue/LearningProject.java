@@ -140,12 +140,18 @@ abstract public class LearningProject {
 	abstract public void addNewItems(int n);
 	
 	public void right(){
+		//play sound
+		LearnActivity.correctSound.start();
+		
 		cardStatus.right();
 		// put it in the appropriate index set
 		indexSets.get(cardStatus.getLevel()).add(cardStatus.getIndex());
 	}
 	
 	public void wrong(){
+		//play sound
+		LearnActivity.incorrectSound.start();
+		
 		cardStatus.wrong();
 		// return to the deck
 		deck.put(cardStatus);		
