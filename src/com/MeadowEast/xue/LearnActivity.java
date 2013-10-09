@@ -1,6 +1,7 @@
 package com.MeadowEast.xue;
 
 import java.io.IOException;
+
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -167,6 +168,7 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			if (lp.next()){
 				prompt.setText(lp.prompt());
 				status.setText(lp.deckStatus());
+
 				itemsShown++;
 			} else {
 				Log.d(TAG, "Error: Deck starts empty");
@@ -174,10 +176,12 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			}
 		} else if (itemsShown == 1){
 			answer.setText(lp.answer());
+
 			itemsShown++;
 		} else if (itemsShown == 2){
 			other.setText(lp.other());
 			advance.setText("next");
+
 			itemsShown++;
 		} else if (itemsShown == 3){
 			// Got it wrong
@@ -186,10 +190,47 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			lp.next();
 			clearContent();
 			prompt.setText(lp.prompt());
+
 			itemsShown = 1;
 			status.setText(lp.deckStatus());
 		}
 
+
+		setOkayButton();
+	}
+	
+	
+	public void setOkayButton(){
+		switch (itemsShown){
+		case 0:
+			okay.setVisibility(View.INVISIBLE);
+			break;
+		case 1:
+			okay.setText("undo");
+			if ( lp.getNumPriorMoves() > 0 ){
+				okay.setVisibility(View.VISIBLE);
+			}else{
+				okay.setVisibility(View.INVISIBLE);
+			}
+			break;
+		case 2:
+			okay.setVisibility(View.INVISIBLE);
+			break;
+		case 3:
+			okay.setText("okay");
+			okay.setVisibility(View.VISIBLE);
+			break;
+		}
+	}
+	
+	private void doUndo(){
+		advance.setText("show");
+		lp.undo();
+		setOkayButton();
+		clearContent();
+		prompt.setText(lp.prompt());
+		itemsShown = 1;
+		status.setText(lp.deckStatus());
 	}
 	
 	private void clearContent(){
@@ -198,8 +239,9 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 		other.setText("");
 	}
 	
+	
 	private void doOkay(){
-		if (okay.getText().equals("done"))
+		if (okay.getText().equals("done")){
 			try {
 				lp.log(lp.queueStatus());
 				lp.writeStatus();
@@ -210,6 +252,9 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 				Log.d(TAG, "couldn't write Status");
 				return;
 			}
+		}
+		
+		
 		// Do nothing unless answer has been seen
 		if (itemsShown < 2) return;
 		// Got it right
@@ -220,10 +265,13 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			prompt.setText(lp.prompt());
 			itemsShown = 1;
 			status.setText(lp.deckStatus());
+			
+			setOkayButton();
 		} else {
 			((ViewManager) advance.getParent()).removeView(advance);
 			status.setText("");
 			okay.setText("done");
+			okay.setVisibility(View.VISIBLE);
 			clearContent();
 		}
 	}
@@ -234,7 +282,12 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
     		doAdvance();
 			break;
     	case R.id.okayButton:
-    		doOkay();
+    		if ( okay.getText() == "undo"){
+    			doUndo();
+    		}
+    		else{
+	    		doOkay();
+    		}
 			break;
 //    	case R.id.promptTextView:
 //    	case R.id.answerTextView:

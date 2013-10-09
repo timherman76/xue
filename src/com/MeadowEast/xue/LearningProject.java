@@ -18,6 +18,8 @@ abstract public class LearningProject {
 	protected Card card = null;	
 	final static String TAG = "CC LearningProject";
 	protected long elapsedTimeMS = 0;
+	protected Move currentMove = null;
+	protected Stack<Move> moves = new Stack<Move>();
 	
 	public LearningProject(String name, int n, int target) {
 		this.n = n;
@@ -37,6 +39,10 @@ abstract public class LearningProject {
 		printIndexSets();
 		Log.d(TAG, "Exiting LearningProject constructor");
 	}	
+	
+	public int getNumPriorMoves(){
+		return moves.size();
+	}
 	
 	protected void printIndexSets(){
 		for(int i=0; i < indexSets.size(); i++){
@@ -120,12 +126,59 @@ abstract public class LearningProject {
 	}
 	
 	public boolean next() {
+		//record last move
+		if ( currentMove != null )
+		{
+			currentMove.setNewCardStatus(cardStatus);
+			moves.push(currentMove);
+			currentMove = null;
+		}
+		
 		if (deck.isEmpty()) return false;
 		cardStatus = deck.get();
 		seen++;
 		card = AllCards.getCard(cardStatus.getIndex());
+		
+		//set up this move
+		currentMove = new Move(cardStatus);
+		
 		return true;
 	}
+	
+	public boolean undo(){
+		boolean result = false;
+		if ( moves.size() > 0){
+
+			seen--;	//decrement # of seen cards
+			deck.put(cardStatus); //put current card back in deck
+			
+			//get last move
+			Move lastMove = moves.pop();
+			
+			//remove from deck if neeeded
+			if ( deck.contains(lastMove.newCardStatus) ){
+				deck.remove(lastMove.newCardStatus);
+			}
+			
+			
+			//see if prev status and current status differ
+			if (!lastMove.getPrevCardStatus().equals(lastMove.getNewCardStatus())){
+				//if so, restore prev status
+				//remove card in index set
+				indexSets.get(lastMove.getNewCardStatus().getLevel()).remove(lastMove.getNewCardStatus().getIndex());
+				//add back to prev index set
+				indexSets.get(lastMove.getPrevCardStatus().getLevel()).add(lastMove.getPrevCardStatus().getIndex());
+			}
+			
+			//restore last card
+			this.cardStatus = lastMove.getPrevCardStatus();
+			card = AllCards.getCard(cardStatus.getIndex());
+			currentMove = lastMove;
+			result = true;
+		}
+		return result;
+	}
+	
 	
 	public int currentIndex(){
 		if (cardStatus==null)
@@ -139,6 +192,7 @@ abstract public class LearningProject {
 	abstract public void addNewItems();
 	abstract public void addNewItems(int n);
 	
+	
 	public void right(){
 		//play sound
 		LearnActivity.correctSound.start();
@@ -148,13 +202,19 @@ abstract public class LearningProject {
 		indexSets.get(cardStatus.getLevel()).add(cardStatus.getIndex());
 	}
 	
+	
+	
+	
+	
 	public void wrong(){
 		//play sound
 		LearnActivity.incorrectSound.start();
 		
+		
+		//mark card as wrong
 		cardStatus.wrong();
 		// return to the deck
-		deck.put(cardStatus);		
+		deck.put(cardStatus);
 	}
 	
 	String deckStatus(){
@@ -216,4 +276,31 @@ abstract public class LearningProject {
 		} catch (Exception e) { Log.d(TAG, "Error in readStatus"); }
 	}
 
+	public class Move{
+		private CardStatus prevCardStatus;
+		private CardStatus newCardStatus;
+		
+		public Move(CardStatus prevCardStatus)
+		{
+			this.setPrevCardStatus(prevCardStatus);
+		}
+
+		public CardStatus getPrevCardStatus() {
+			return prevCardStatus;
+		}
+
+		public void setPrevCardStatus(CardStatus prevCardStatus) {
+			this.prevCardStatus = prevCardStatus.clone();
+		}
+
+		public CardStatus getNewCardStatus() {
+			return newCardStatus;
+		}
+
+		public void setNewCardStatus(CardStatus newCardStatus) {
+			this.newCardStatus = newCardStatus;
+		}
+		
+	}
+	
 }

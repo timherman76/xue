@@ -18,4 +18,16 @@ public class Deck {
 	public int size(){
 		return cardStatusQueue.size();
 	}
+	public void remove(CardStatus cs){
+		cardStatusQueue.remove(cs);
+	}
+	
+	public boolean contains(CardStatus cs){
+		for(CardStatus stat : cardStatusQueue){
+			if ( stat.equals(cs) ){
+				return true;
+			}
+		}
+		return false;
+	}
 }

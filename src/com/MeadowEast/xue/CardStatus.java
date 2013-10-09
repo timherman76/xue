@@ -26,4 +26,20 @@ public class CardStatus {
 	public String toString(){
 		return "CardStatus: index="+index+" level="+level;
 	}
+	
+	public CardStatus clone(){
+		CardStatus result = new CardStatus(this.index, this.level);
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		boolean result = false;
+		if( obj != null && obj instanceof CardStatus){
+			CardStatus cs = (CardStatus) obj;
+			result = (cs.level == this.level && cs.index == this.index);
+		}
+			
+		return result;
+	}
 }
