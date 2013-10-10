@@ -164,7 +164,7 @@ abstract public class LearningProject {
 			//check levels and see if card was marked right
 			int prevLevel = lastMove.getPrevCardStatus().getLevel();
 			int newLevel = lastMove.getNewCardStatus().getLevel();
-			boolean right = (prevLevel >= newLevel && prevLevel != 0);
+			boolean right = (newLevel >= prevLevel && newLevel != 0);
 			
 			if (right){
 				//if card was marked right...
