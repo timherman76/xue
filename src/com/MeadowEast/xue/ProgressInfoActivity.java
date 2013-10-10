@@ -19,7 +19,7 @@ public class ProgressInfoActivity extends Activity {
 	ProgressLog progressLogEC = null;
 	ProgressLog progressLogCE = null;
 	
-	protected static final int NUM_DAYS = 7;
+	protected static final int NUM_DAYS = 90;
 	public static final String NUM_DECKS = "NUM_DECKS";
 	public static final String NUM_ITEMS_LEARNED = "NUM_ITEMS_LEARNED";
 	public static final String AVG_ITEMS_PER_DAY = "AVG_ITEMS_PER_DAY";

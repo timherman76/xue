@@ -75,8 +75,10 @@ public class MainActivity extends Activity implements OnClickListener {
         MenuItem showProgress = menu.findItem(R.id.menu_show_progress);      
         
         File logFile = new File(MainActivity.filesDir, "EnglishChinese" + ".log.txt");
+        File logFileCE = new File(MainActivity.filesDir, "ChineseEnglish" + ".log.txt");
         
-        boolean logFileValid = logFile.exists() && logFile.canRead(); 
+        boolean logFileValid = logFile.exists() && logFile.canRead()
+        		&& logFileCE.exists() && logFileCE.canRead(); 
         
         if(logFileValid) 
         {           

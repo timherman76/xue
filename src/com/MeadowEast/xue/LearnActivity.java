@@ -214,8 +214,6 @@ public class LearnActivity extends Activity implements OnClickListener, OnLongCl
 			}
 			break;
 		case 2:
-			okay.setVisibility(View.INVISIBLE);
-			break;
 		case 3:
 			okay.setText("okay");
 			okay.setVisibility(View.VISIBLE);

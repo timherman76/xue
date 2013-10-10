@@ -161,13 +161,15 @@ abstract public class LearningProject {
 			}
 			
 			
-			//see if prev status and current status differ
-			if (!lastMove.getPrevCardStatus().equals(lastMove.getNewCardStatus())){
-				//if so, restore prev status
+			//check levels and see if card was marked right
+			int prevLevel = lastMove.getPrevCardStatus().getLevel();
+			int newLevel = lastMove.getNewCardStatus().getLevel();
+			boolean right = (prevLevel >= newLevel && prevLevel != 0);
+			
+			if (right){
+				//if card was marked right...
 				//remove card in index set
 				indexSets.get(lastMove.getNewCardStatus().getLevel()).remove(lastMove.getNewCardStatus().getIndex());
-				//add back to prev index set
-				indexSets.get(lastMove.getPrevCardStatus().getLevel()).add(lastMove.getPrevCardStatus().getIndex());
 			}
 			
 			//restore last card
